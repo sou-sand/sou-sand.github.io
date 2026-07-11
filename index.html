@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SouSand | My Portfolio :D</title>
+        <link rel="icon" type="image/x-icon" href="sources/images/favicon.ico" />
+
+        <style>
+            :root {
+                --bg: #141414;
+                --wiki-container: #1b1b1b;
+                --wiki-card: #242424;
+                --accent: #5b00cd;
+                --accent-hover: #a200ff;
+                --text: #ffffff;
+                --secondary: #aaaaaa;
+                --border: #333333;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+                line-height: 1.6;
+                padding: 20px;
+            }
+
+            .wiki-wrapper {
+                max-width: 1100px;
+                margin: 30px auto;
+                background: var(--wiki-container);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 30px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .wiki-header {
+                border-bottom: 3px solid var(--accent);
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+            }
+
+            .wiki-title {
+                font-size: 2.5rem;
+                font-weight: 700;
+            }
+
+            .wiki-subtitle {
+                color: var(--secondary);
+                font-style: italic;
+                font-size: 0.95rem;
+                margin-top: 5px;
+            }
+
+            .wiki-columns {
+                display: grid;
+                grid-template-columns: 1fr 320px;
+                gap: 30px;
+            }
+
+            @media (max-width: 768px) {
+                .wiki-columns {
+                    grid-template-columns: 1fr;
+                }
+                .infobox {
+                    order: -1;
+                }
+            }
+
+            .main-content p {
+                margin-bottom: 15px;
+                color: #e0e0e0;
+            }
+
+            .wiki-section-title {
+                font-size: 1.5rem;
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 5px;
+                margin: 30px 0 15px 0;
+                color: var(--accent);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .wiki-gallery {
+                background: var(--wiki-card);
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                width: 100%;
+                margin: 20px 0;
+                overflow: hidden;
+            }
+
+            .gallery-header {
+                background: rgba(0, 0, 0, 0.2);
+                padding: 10px 15px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 1rem;
+                color: var(--text);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .gallery-viewport {
+                position: relative;
+                height: 320px;
+                background: #111;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .gallery-viewport img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .gallery-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.6);
+                color: #fff;
+                border: 1px solid var(--border);
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s ease;
+                user-select: none;
+                z-index: 10;
+            }
+
+            .gallery-btn:hover {
+                background: var(--accent);
+                border-color: var(--accent);
+            }
+
+            .btn-prev {
+                left: 12px;
+            }
+            .btn-next {
+                right: 12px;
+            }
+
+            .gallery-dots {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 6px;
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.1);
+            }
+
+            .dot {
+                width: 7px;
+                height: 7px;
+                background: #555;
+                border-radius: 50%;
+                transition: background 0.2s;
+            }
+
+            .dot.active {
+                background: var(--accent);
+            }
+
+            .project-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+
+            .project-card {
+                background: var(--wiki-card);
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .thumbnail {
+                width: 100%;
+                height: 217px;
+                object-fit: cover;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .project-body {
+                padding: 15px;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+            }
+
+            .project-meta {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .logo-circle {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .logo-wide {
+                height: 83px;
+                max-width: 200px;
+                object-fit: contain;
+            }
+
+            .project-name {
+                font-weight: bold;
+                font-size: 1.1rem;
+            }
+
+            .project-desc {
+                font-size: 0.9rem;
+                color: #ccc;
+                margin-bottom: 15px;
+                flex-grow: 1;
+            }
+
+            .wiki-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .wiki-links a {
+                font-size: 0.8rem;
+                text-decoration: none;
+                color: #fff;
+                background: #333;
+                padding: 5px 10px;
+                border-radius: 4px;
+                border: 1px solid var(--border);
+                transition: background 0.2s;
+            }
+
+            .wiki-links a:hover {
+                background: var(--accent);
+            }
+
+            .infobox {
+                background: var(--wiki-card);
+                border: 1px solid var(--border);
+                border-radius: 4px;
+                padding: 15px;
+                align-self: start;
+            }
+
+            .infobox-title {
+                text-align: center;
+                font-size: 1.3rem;
+                background: var(--accent);
+                padding: 6px;
+                font-weight: bold;
+                border-radius: 4px;
+                margin-bottom: 12px;
+            }
+
+            .infobox-pfp-wrapper {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            #pfp {
+                width: 180px;
+                height: 180px;
+                border-radius: 8px;
+                border: 2px solid var(--border);
+                object-fit: cover;
+            }
+
+            .infobox-data {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 0.9rem;
+            }
+
+            .infobox-data tr {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .infobox-data tr:last-child {
+                border-bottom: none;
+            }
+
+            .infobox-data th {
+                text-align: left;
+                padding: 8px 4px;
+                color: var(--secondary);
+                width: 40%;
+                vertical-align: top;
+            }
+
+            .infobox-data td {
+                padding: 8px 4px;
+                text-align: left;
+            }
+
+            .infobox-socials {
+                margin-top: 15px;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .infobox-socials a {
+                display: block;
+                text-align: center;
+                text-decoration: none;
+                color: #fff;
+                background: #2b2b2b;
+                padding: 6px;
+                font-size: 0.85rem;
+                border-radius: 4px;
+                border: 1px solid var(--border);
+            }
+
+            .infobox-socials a:hover {
+                background: var(--accent);
+            }
+
+            .wiki-blockquote {
+                background-color: #1b1b1b;
+                border-left: 4px solid #420560;
+                margin: 20px 0;
+                padding: 15px 20px;
+                border-radius: 0 8px 8px 0;
+            }
+
+            .wiki-blockquote p {
+                margin: 0;
+                color: #dddddd;
+                font-size: 1rem;
+                line-height: 1.6;
+                font-style: italic;
+            }
+
+            .wiki-blockquote .quote-author {
+                display: block;
+                margin-top: 8px;
+                color: #aaaaaa;
+                font-size: 0.85rem;
+                font-style: normal;
+                font-weight: bold;
+            }
+
+            footer {
+                text-align: center;
+                margin-top: 40px;
+                color: var(--secondary);
+                font-size: 0.85rem;
+            }
+
+            .news-shelf {
+                background: var(--wiki-card);
+                border: 1px solid var(--border);
+                border-left: 4px solid var(--accent);
+                border-radius: 6px;
+                overflow: hidden;
+                margin-bottom: 10px;
+            }
+
+            .news-header {
+                background: rgba(91, 0, 205, 0.18);
+                color: var(--text);
+                font-weight: bold;
+                padding: 12px 18px;
+                border-bottom: 1px solid var(--border);
+                font-size: 1.1rem;
+            }
+
+            .news-item {
+                padding: 16px 18px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .news-item:last-child {
+                border-bottom: none;
+            }
+
+            .news-date {
+                color: var(--secondary);
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .news-item h3 {
+                margin: 5px 0;
+                color: var(--accent);
+                font-size: 1.1rem;
+            }
+
+            .news-item p {
+                margin: 0;
+                color: #ddd;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wiki-wrapper">
+            <header class="wiki-header">
+                <h1 class="wiki-title">SouSand</h1>
+                <div class="wiki-subtitle">daisy daisy - S</div>
+                <div class="wiki-subtitle" style="color: #ff0000; font-weight: bold; margin-top: 10px">
+                    ⚠️ NOTE: Most of the projects are yet to be finished.
+                </div>
+            </header>
+
+            <div class="wiki-blockquote">
+                <p>“Carpe diem, pentru că nu-mi va plăcea niciodată.”</p>
+                <span class="quote-author">— Ample.</span>
+            </div>
+            <div class="news-shelf">
+                <div class="news-header">Latest News</div>
+
+                <div class="news-item">
+                    <span class="news-date">July 10, 2026</span>
+                    <h3>Website Refresh</h3>
+                    <p>
+                        Updating usernames, links and giving the portfolio a cleaner look. More improvements are coming
+                        over the next few weeks.
+                    </p>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Coming Soon</span>
+                    <h3>New Projects</h3>
+                    <p>Expect more information about NoWayBack Machine, Hangout or smth, and other future projects.</p>
+                </div>
+            </div>
+            <div class="wiki-columns">
+                <main class="main-content">
+                    <p>
+                        <strong><span style="font-weight: 400">I am </span>SouSand,</strong> a Brazilian
+                        developer, creator, director, UI designer, and writer, amongst other things. I'm a "nerd", I
+                        like coding and making stuff for fun, they say that I focus too much on the future instead of
+                        the present, which, is honestly true.
+                    </p>
+                    <p>
+                        I'm open to anything you want to talk about! From helping my projects to helping YOUR projects,
+                        I have some free time!
+                    </p>
+
+                    <h2 class="wiki-section-title">Current Projects</h2>
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div class="gallery-viewport" style="height: 160px">
+                                <button class="gallery-btn btn-prev" onclick="changeSlide(-1)">&#10094;</button>
+                                <img
+                                    id="galleryImage"
+                                    src="sources/images/title-screen.png"
+                                    alt="Gallery Showcase"
+                                    style="width: 100%; height: 100%; object-fit: cover" />
+                                <button class="gallery-btn btn-next" onclick="changeSlide(1)">&#10095;</button>
+                            </div>
+
+                            <div class="project-body">
+                                <div class="project-meta">
+                                    <img
+                                        class="logo-wide"
+                                        src="sources/images/nowaybackmachinelogo.png"
+                                        alt="NoWayBack Machine Logo" />
+                                </div>
+
+                                <div class="project-desc">
+                                    <div class="gallery-dots" id="galleryDots" style="margin-bottom: 10px">
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                    </div>
+                                    A game inspired by FNAF:SL &amp; Poppy Playtime (Chapters 2, 3 &amp; 5) that tells a
+                                    fictional story about Roblox Corporation, Roblox Science Labs and many other stuff.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img class="thumbnail" src="sources/images/no-img.png" alt="NovaRevival Thumbnail" />
+                            <div class="project-body">
+                                <div class="project-meta">
+                                    <img class="logo-circle" src="sources/images/no-img.png" alt="NovaRevival Logo" />
+                                    <span class="project-name">Hangout or smth - Pilot</span>
+                                </div>
+                                <div class="project-desc">
+                                    An indie animation project made by me and Ness. Inspired by some personal
+                                    experiences, life on discord and songs such as Glimpse of Us, Freaks, Fix You and
+                                    Ego.
+                                </div>
+                                <div class="wiki-links">
+                                    <a
+                                        href="https://docs.google.com/document/d/1RmZmhyTgLR_PHdEKngNzuI0LI85xYYod85WB6SHnUMk/edit?usp=sharing"
+                                        target="_blank"
+                                        >Check Pilot Script</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img
+                                class="thumbnail"
+                                src="sources/images/novarevivalthumb.png"
+                                alt="NovaRevival Thumbnail" />
+                            <div class="project-body">
+                                <div class="project-meta">
+                                    <img
+                                        class="logo-circle"
+                                        src="sources/images/novarevival_logo.png"
+                                        alt="NovaRevival Logo" />
+                                    <span class="project-name">NovaRevival</span>
+                                </div>
+                                <div class="project-desc">
+                                    An indie project dedicated to archiving custom ROMs, third-party apps, hacks, and
+                                    resources for the Windows Phone (7-7.8) environment. Plans include an independent
+                                    ecosystem in the future.
+                                </div>
+                                <div class="wiki-links">
+                                    <a href="https://novarevival.marmak.net.pl/" target="_blank">Website</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img class="thumbnail" src="sources/images/fe22018_thumb.png" alt="FE2 2018 Thumbnail" />
+                            <div class="project-body">
+                                <div class="project-meta">
+                                    <img class="logo-wide" src="sources/images/fe2_2018_logo.png" alt="FE2 2018 Logo" />
+                                </div>
+                                <div class="project-desc">
+                                    A archived version of Flood Escape 2 by Crazyblox, that was released in 2018/mid
+                                    2019. Work in progress.
+                                </div>
+                                <!--<div class="wiki-links">
+                                    <a href="https://www.roblox.com/games/135294207338802/FE2-2018-Archival" target="_blank">Check it Out</a>
+                                </div>-->
+                            </div>
+
+                            <div class="project-card">
+                                <img class="thumbnail" src="sources/images/fe1tumb.png" alt="FE1 2013 Thumbnail" />
+                                <div class="project-body">
+                                    <div class="project-meta">
+                                        <img class="logo-wide" src="sources/images/fe1logo.png" alt="FE1 2013 Logo" />
+                                    </div>
+                                    <div class="project-desc">
+                                        &nbsp;A archived version of Flood Escape: Classic by Crazyblox, that was
+                                        released in 2013, being version 1.6.5. Work in progress.
+                                    </div>
+                                    <!--<div class="wiki-links">
+                                    <a href="https://www.roblox.com/games/135294207338802/FE2-2018-Archival" target="_blank">Check it Out</a>
+                                </div>-->
+                                </div>
+                            </div>
+                            <!--
+                            <div class="project-card">
+                                <img
+                                    class="thumbnail"
+                                    src="sources/images/old-unused/stereocity_snapshotdialog.png"
+                                    alt="NovaRevival Thumbnail" />
+                                <div class="project-body">
+                                    <div class="project-meta">
+                                        <img
+                                            class="logo-wide"
+                                            src="sources/images/old-unused/stereocity_logo.png"
+                                            alt="NovaRevival Logo" />
+                                    </div>
+                                    <div class="project-desc">
+                                        <b><i>[DISCONTINUED]</i></b
+                                        ><br />A game that I made some stuff for. The original content was lost, but it
+                                        was made to be a open-world, RPG, a story about the protagonist that survived
+                                        the end of the world.
+                                    </div>
+                                    <div class="wiki-links">
+                                        <a href="/extras/stereo_city_end_dialog.txt" target="_blank">End Dialogue</a>
+                                        <a href="/extras/stereo_city_dialogue_bgSong.wav" target="_blank"
+                                            >End Dialogue Theme</a
+                                        >
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </main>
+
+                <aside class="infobox">
+                    <div class="infobox-banner-wrapper" style="margin-bottom: 12px">
+                        <img
+                            src="sources/images/banner.jpg"
+                            alt="Developer Banner"
+                            style="
+                                width: 100%;
+                                height: 90px;
+                                object-fit: cover;
+                                border-radius: 4px;
+                                border: 1px solid var(--border);
+                            " />
+                    </div>
+
+                    <div class="infobox-title">SouSand</div>
+
+                    <div class="infobox-pfp-wrapper">
+                        <img id="pfp" src="sources/images/pfp.jpg" alt="Profile Picture" />
+                    </div>
+
+                    <table class="infobox-data">
+                        <tr>
+                            <th>Gender</th>
+                            <td>Male (He/Him)</td>
+                        </tr>
+                        <tr>
+                            <th>Roles</th>
+                            <td>Developer, UI Designer, Creator, Writer</td>
+                        </tr>
+                        <tr>
+                            <th>Origin</th>
+                            <td>Brazil</td>
+                        </tr>
+                        <tr>
+                            <th>Interests</th>
+                            <td>Rock Music, Tech, Game Development, Indie Projects</td>
+                        </tr>
+                        <tr>
+                            <th>Aliases</th>
+                            <td>SouSand, SouSand Artworks</td>
+                        </tr>
+                        <tr>
+                            <th>Discord</th>
+                            <td>@sou-sand</td>
+                        </tr>
+                    </table>
+
+                    <div class="infobox-title" style="margin-top: 15px; font-size: 1rem">External Links</div>
+                    <div class="infobox-socials">
+                        <a href="https://discord.gg/msWnUDjstp" target="_blank">Discord Server</a>
+                        <a href="https://www.youtube.com/@sou-sand" target="_blank">YouTube Channel</a>
+                        <!--<a href="https://www.reddit.com/u/AmpleVariousC4/" target="_blank">Reddit Profile</a>-->
+                        <a href="https://x.com/SouSandwejkanes" target="_blank">X (Twitter) Profile</a>
+                        <a href="https://bsky.app/profile/sousand.bsky.social" target="_blank">Bluesky Profile</a>
+                        <a href="https://www.tiktok.com/@sousandddsdsfedsfetaf?_r=1&_t=ZS-97vWKP4wgXU" target="_blank"
+                            >TikTok Profile</a
+                        >
+                        <a href="https://t.me/sou_sand" target="_blank">Telegram Profile</a>
+                        <a href="https://www.twitch.tv/sousandefasesygyf" target="_blank">Twitch Profile</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <footer>© 2026 SouSand • All Rights Reserved</footer>
+
+        <script>
+            // gah, too lazy to update, thanks gemini for making ts, im rlly lazy
+            // to-do update
+            const projectGallery = [
+                { title: "Title Screen", img: "sources/images/title-screen.png" },
+                { title: "Main Hall 1", img: "sources/images/main-hall.png" },
+                { title: "Main Hall 2", img: "sources/images/main-hall-hall.png" },
+                { title: "Main Hall 3", img: "sources/images/main-hall-rbx.png" },
+                { title: "Storage Room", img: "sources/images/storage-room.png" },
+                { title: "Small Storage Room", img: "sources/images/small-storage-room.png" },
+                { title: "Builderman Room", img: "sources/images/buildermanroom.png" },
+                { title: "Enter Builderman's Room", img: "sources/images/enter-buildermans-room.png" },
+                { title: "First Puzzle Room", img: "sources/images/firstpuzzleroom.png" },
+                {
+                    title: "Prototype Rigs Conversation Room",
+                    img: "sources/images/prototype-rigs-conversation-room.png"
+                },
+                { title: "Up Corridor", img: "sources/images/up-corridor.png" },
+                { title: "Elevator", img: "sources/images/elevator.png" },
+                { title: "Night 1 Room", img: "sources/images/night1 room.png" },
+                { title: "Night 2 Room", img: "sources/images/night 2 room.png" },
+                { title: "Night 1 Vent", img: "sources/images/night 1 vent.png" },
+                { title: "Vents 1", img: "sources/images/vents1.png" },
+                { title: "Vents 2", img: "sources/images/vents2.png" },
+                { title: "Night Screen", img: "sources/images/night screen.png" },
+                { title: "Autosaving", img: "sources/images/autosaving.png" },
+                { title: "Inventory", img: "sources/images/inventory.png" },
+                { title: "HUD", img: "sources/images/hud.png" },
+                { title: "Dev Tools", img: "sources/images/dev-tools.png" },
+                { title: "Extras", img: "sources/images/extras.png" },
+                { title: "Disclaimer 1", img: "sources/images/disclaimer1.png" },
+                { title: "Disclaimer 2", img: "sources/images/disclaimer2.png" },
+                { title: "Settings 1", img: "sources/images/settings1.png" },
+                { title: "Settings 2", img: "sources/images/settings2.png" },
+                { title: "Tape 999", img: "sources/images/tape999.png" },
+                { title: "Marcus Roben VHS Tape ID 999", img: "sources/images/ruben tape 999.png" },
+                { title: "Marcus Roben Document", img: "sources/images/marcus-roben-doc.png" },
+                { title: "Trash complaint", img: "sources/images/toynegation.png" },
+                { title: "Toy Re-call", img: "sources/images/toynegationmb.png" },
+                { title: "Roller 1", img: "sources/images/almostthere.png" },
+                { title: "Roller 2", img: "sources/images/almost out of there.png" },
+                { title: "Roller 3", img: "sources/images/almost out of there again.png" },
+                { title: "Roller 4", img: "sources/images/man so close.png" },
+                { title: "Roller 5", img: "sources/images/man just let me leave.png" },
+                { title: "Roller 6", img: "sources/images/aaaaaaaaaaaaaaa so close.png" },
+                { title: "Roller 7", img: "sources/images/AAAAAAAAAAAAAAA.png" },
+                { title: "NoWayBack Machine Preview 1", img: "sources/images/nowaybackmachine-ss.png" },
+                { title: "NoWayBack Machine Render 1", img: "sources/images/nowaybackmachine-render1.png" },
+                { title: "NoWayBack Machine Render 2", img: "sources/images/nowaybackmachine-render2.png" },
+                { title: "NoWayBack Machine Render 3", img: "sources/images/nowaybackmachine-render3.png" },
+                { title: "NoWayBack Machine Render 4", img: "sources/images/nowaybackmachine-render4.png" },
+                { title: "NoWayBack Machine Preview 2", img: "sources/images/nowaybackmachine_5.png" },
+                { title: "NoWayBack Machine Preview 3", img: "sources/images/nowaybackmachine_6.png" },
+                { title: "NoWayBack Machine Preview 4", img: "sources/images/nowaybackmachine_7.png" },
+                { title: "NoWayBack Machine VHS ID 999 Preview", img: "sources/videos/notfinalbuilderman.mp4" }
+            ];
+
+            let currentIndex = 0;
+
+            function updateGallery(index) {
+                const imgElement = document.getElementById("galleryImage");
+                const item = projectGallery[index];
+
+                if (item.img.endsWith(".mp4")) {
+                    imgElement.outerHTML = `
+                <video id="galleryImage"
+                   controls autoplay muted
+                   style="width:100%;height:100%;object-fit:cover;">
+                   <source src="${item.img}" type="video/mp4">
+                </video>
+                `;
+                } else {
+                    imgElement.src = item.img;
+                    imgElement.alt = item.title;
+                }
+            }
+
+            function changeSlide(direction) {
+                currentIndex += direction;
+
+                if (currentIndex >= projectGallery.length) {
+                    currentIndex = 0;
+                } else if (currentIndex < 0) {
+                    currentIndex = projectGallery.length - 1;
+                }
+
+                updateGallery(currentIndex);
+                updateDots(currentIndex);
+            }
+
+            function updateDots(activeIndex) {
+                const dots = document.querySelectorAll(".dot");
+                dots.forEach((dot, index) => {
+                    if (index === activeIndex) {
+                        dot.classList.add("active");
+                    } else {
+                        dot.classList.remove("active");
+                    }
+                });
+            }
+
+            function initDots(containerId) {
+                const dotsContainer = document.getElementById(containerId);
+                if (!dotsContainer) return;
+
+                dotsContainer.innerHTML = "";
+                projectGallery.forEach((_, index) => {
+                    const dot = document.createElement("div");
+                    dot.classList.add("dot");
+                    if (index === 0) dot.classList.add("active");
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            window.onload = () => initDots("galleryDots");
+        </script>
+    </body>
+</html>
