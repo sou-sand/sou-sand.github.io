@@ -8,11 +8,11 @@
 
         <style>
             :root {
-                --bg: #141414;
-                --wiki-container: #1b1b1b;
+                --bg: #000000;
+                --wiki-container: #000000;
                 --wiki-card: #242424;
-                --accent: #767676;
-                --accent-hover: #000000;
+                --accent: #306bc2;
+                --accent-hover: #000fff;
                 --text: #ffffff;
                 --secondary: #aaaaaa;
                 --border: #333333;
@@ -37,7 +37,6 @@
                 margin: 30px auto;
                 background: var(--wiki-container);
                 border: 1px solid var(--border);
-                border-radius: 8px;
                 padding: 30px;
                 display: flex;
                 flex-direction: column;
@@ -438,6 +437,14 @@
             </div>
             <div class="news-shelf">
                 <div class="news-header">Latest News</div>
+                
+                <div class="news-item">
+                    <span class="news-date">July 30, 2026</span>
+                    <h3>Overhaul (finally) on website soon</h3>
+                    <p>
+                       new design, woo.
+                    </p>
+                </div>
 
                 <div class="news-item">
                     <span class="news-date">July 19, 2026</span>
@@ -585,6 +592,28 @@
                         <div class="project-card">
                             <img
                                 class="thumbnail"
+                                src="sources/images/no-img.png"
+                                alt="Thumbnail soon" />
+                            <div class="project-body">
+                                <div class="project-meta">
+                                    <img
+                                        class="logo-circle"
+                                        src="sources/images/no-img.png"
+                                        alt="Logo soon" />
+                                    <span class="project-name">8cord</span>
+                                </div>
+                                <div class="project-desc">
+                                    An metro version of the Discord (Desktop) client for Windows 8.x family.
+                                </div>
+                                <div class="wiki-links">
+                                    <a href="https://github.com/sou-sand/MetroDCord" target="_blank">Repository (will change and update contents)</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <img
+                                class="thumbnail"
                                 src="sources/images/sedatives.png"
                                 alt="Sedatives album cover" />
                             <div class="project-body">
@@ -721,7 +750,7 @@
                 <aside class="infobox">
                     <div class="infobox-banner-wrapper" style="margin-bottom: 12px">
                         <img
-                            src="sources/images/banner.jpg"
+                            src="sources/images/banner.png"
                             alt="Developer Banner"
                             style="
                                 width: 100%;
@@ -735,7 +764,7 @@
                     <div class="infobox-title">SouSand</div>
 
                     <div class="infobox-pfp-wrapper">
-                        <img id="pfp" src="sources/images/pfp.jpg" alt="Profile Picture" />
+                        <img id="pfp" src="sources/images/pfp.png" alt="Profile Picture" />
                     </div>
 
                     <table class="infobox-data">
