@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Artworks Team — Demo</title>
+  <meta name="description" content="Portfolio site demo for an artworks team." />
+  <style>
+    :root{
+      --bg:#0b0d12;
+      --panel:#121622;
+      --text:#e9ecf3;
+      --muted:#a9afbf;
+      --brand:#7c5cff;
+      --brand2:#2dd4bf;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius:16px;
+      --radius2:12px;
+      --max:1100px;
+      --grid:12px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(124,92,255,.35), transparent 60%),
+                  radial-gradient(900px 600px at 90% 0%, rgba(45,212,191,.22), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.45;
+    }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    /* Layout */
+    .wrap{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,13,18,.65);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .logo{
+      width:100px; height:46px; border-radius:12px;
+    }
+    nav ul{
+      list-style:none; margin:0; padding:0;
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    nav a{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid transparent;
+      color:var(--muted);
+      font-weight:650;
+      transition: .15s ease;
+    }
+    nav a:hover{
+      color:var(--text);
+      border-color: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+    }
+
+    /* Sections */
+    section{ padding:46px 0; }
+    .hero{
+      padding:52px 0 34px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:start;
+    }
+    @media (max-width: 860px){
+      .hero-grid{ grid-template-columns:1fr; }
+      nav ul{ justify-content:flex-start; }
+    }
+    .kicker{
+      color:var(--muted);
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:12px;
+      margin-bottom:10px;
+    }
+    h1{
+      margin:0 0 14px;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    .lead{
+      color:var(--muted);
+      font-size:16px;
+      max-width:58ch;
+      margin:0 0 22px;
+    }
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:750;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      transition:.15s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.24); }
+    .btn.primary{
+      border-color: rgba(124,92,255,.55);
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(45,212,191,.55));
+      box-shadow: 0 18px 50px rgba(124,92,255,.22);
+    }
+    .btn.ghost{
+      background: transparent;
+      color:var(--muted);
+    }
+
+    .panel{
+      background: rgba(18,22,34,.75);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .card-grid{
+      display:grid;
+      grid-template-columns: repeat(12,1fr);
+      gap:14px;
+    }
+    .span-6{ grid-column: span 6; }
+    .span-4{ grid-column: span 4; }
+    .span-8{ grid-column: span 8; }
+    .span-12{ grid-column: span 12; }
+    @media (max-width: 900px){
+      .span-6{ grid-column: span 12; }
+      .span-4{ grid-column: span 6; }
+      .span-8{ grid-column: span 12; }
+    }
+    @media (max-width: 640px){
+      .span-4{ grid-column: span 12; }
+    }
+
+    /* Gallery grid */
+    .filters{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin:12px 0 18px;
+    }
+    .chip{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-weight:720;
+      cursor:pointer;
+      transition:.15s ease;
+      user-select:none;
+      font-size:13px;
+    }
+    .chip[aria-pressed="true"]{
+      color: var(--text);
+      border-color: rgba(124,92,255,.6);
+      background: rgba(124,92,255,.18);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12,1fr);
+      gap:14px;
+    }
+    .art-tile{
+      grid-column: span 4;
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      transition:.16s ease;
+      cursor:pointer;
+    }
+    .art-tile:hover{
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.20);
+      box-shadow: 0 22px 70px rgba(0,0,0,.38);
+    }
+    @media (max-width: 900px){
+      .art-tile{ grid-column: span 6; }
+    }
+    @media (max-width: 640px){
+      .art-tile{ grid-column: span 12; }
+    }
+    .thumb{
+      height:220px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.01));
+      position:relative;
+    }
+    .thumb img{ width:100%; height:100%; object-fit:cover; opacity:.95; }
+    .tile-meta{
+      padding:12px 12px 14px;
+      display:flex; justify-content:space-between; gap:10px;
+      align-items:flex-start;
+    }
+    .tile-meta h3{
+      font-size:14px; margin:0 0 6px; line-height:1.2;
+    }
+    .tile-meta p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; justify-content:center;
+      border-radius:999px;
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,.14);
+      color: var(--muted);
+      font-weight:770;
+      font-size:12px;
+      white-space:nowrap;
+      background: rgba(255,255,255,.03);
+    }
+
+    /* Case / Project */
+    .project-header{
+      display:flex; gap:18px; justify-content:space-between; align-items:flex-start;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    .project-header h2{ margin:0; font-size:28px; }
+    .meta-row{
+      display:flex; gap:10px; flex-wrap:wrap;
+      color:var(--muted);
+      font-weight:650;
+      font-size:13px;
+      align-items:center;
+    }
+    .divider{
+      height:1px; background: rgba(255,255,255,.10);
+      margin:16px 0;
+    }
+    .gallery-hero{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+    }
+    .gallery-hero .main-img{
+      height:min(460px, 60vh);
+      width:100%;
+      object-fit:cover;
+    }
+    .thumb-row{
+      display:grid; gap:10px;
+      grid-template-columns: repeat(4, 1fr);
+      padding:12px;
+      background: rgba(255,255,255,.02);
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+    @media (max-width: 640px){
+      .thumb-row{ grid-template-columns: repeat(2, 1fr); }
+    }
+    .thumb-btn{
+      height:88px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+      cursor:pointer;
+      background: rgba(255,255,255,.03);
+      transition:.15s ease;
+    }
+    .thumb-btn:hover{ border-color: rgba(255,255,255,.22); transform: translateY(-1px); }
+    .thumb-btn[aria-current="true"]{ border-color: rgba(124,92,255,.65); box-shadow: 0 0 0 3px rgba(124,92,255,.18) inset; }
+    .thumb-btn img{ width:100%; height:100%; object-fit:cover; }
+
+    /* Artists */
+    .person{
+      border-radius: var(--radius);
+      padding:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      display:flex; gap:14px;
+      align-items:flex-start;
+    }
+    .avatar{
+      width:72px; height:72px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.18);
+      background: linear-gradient(135deg, rgba(124,92,255,.55), rgba(45,212,191,.25));
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .avatar img{ width:100%; height:100%; object-fit:cover; }
+    .person h3{ margin:0 0 6px; font-size:16px; }
+    .person p{ margin:0; color:var(--muted); font-size:13.5px; }
+    .social{
+      margin-top:10px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .social a{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--muted);
+      font-weight:720;
+      font-size:12.5px;
+      background: rgba(255,255,255,.03);
+    }
+    .social a:hover{ color:var(--text); border-color: rgba(255,255,255,.22); }
+
+    /* Contact */
+    form{
+      display:grid;
+      gap:12px;
+    }
+    label{
+      font-weight:720;
+      color:var(--muted);
+      font-size:13px;
+      display:block;
+      margin-bottom:6px;
+    }
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      outline:none;
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(124,92,255,.65);
+      box-shadow: 0 0 0 3px rgba(124,92,255,.18);
+    }
+    textarea{ min-height:120px; resize:vertical; }
+    .form-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 720px){
+      .form-row{ grid-template-columns:1fr; }
+    }
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--border);
+      padding:28px 0 40px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footer-row{
+      display:flex; justify-content:space-between; align-items:flex-start;
+      gap:16px; flex-wrap:wrap;
+    }
+
+    /* Modal / Lightbox */
+    .modal{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.65);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:100;
+    }
+    .modal[open]{ display:flex; }
+    .modal-box{
+      width:min(980px, 100%);
+      border-radius: var(--radius);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(18,22,34,.92);
+      box-shadow: 0 30px 100px rgba(0,0,0,.6);
+    }
+    .modal-top{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      gap:12px;
+    }
+    .modal-top .title{
+      font-weight:850;
+      letter-spacing:.2px;
+    }
+    .icon-btn{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--text);
+      border-radius:12px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-weight:820;
+    }
+    .modal-img{
+      height:min(620px, 70vh);
+      width:100%;
+      object-fit:contain;
+      background: rgba(255,255,255,.02);
+    }
+    .modal-caption{
+      padding:12px 14px 16px;
+      color:var(--muted);
+      font-size:13.5px;
+    }
+
+    /* Simple page switcher */
+    [data-page]{ display:none; }
+    [data-page].active{ display:block; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#" data-nav="home">
+        <div class="logo" aria-hidden="true"><img src="sources/logo.png" alt="Logo"></div>
+        <div>
+          <div style="font-size:14px; color:var(--muted); font-weight:800; letter-spacing:.12em; text-transform:uppercase;">SouSand Artworks Team</div>
+          <div style="font-size:15px;">Our Portfolio! :D</div>
+        </div>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="#" data-nav="home">Home</a></li>
+          <li><a href="#" data-nav="gallery">Projects</a></li>
+          <li><a href="#" data-nav="artists">Artists</a></li>
+          <li><a href="#" data-nav="socials">Socials</a></li>
+          <li><a href="#" data-nav="about">About</a></li>
+          <li><a href="#" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <main class="wrap">
+    <section data-page="home" class="hero active" aria-label="Home">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">INDIE game development studio</div>
+          <h1>Creating games, music, and unforgettable worlds.</h1>
+          <p class="lead">Welcome to SouSand Artworks! - This website is in beta state, some stuff may be missing.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#" data-nav="gallery">Browse projects</a>
+            <a class="btn ghost" href="#" data-nav="contact">Commission inquiry</a>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="card-grid">
+            <div class="panel span-6">
+              <div style="display:flex; justify-content:space-between; gap:14px; align-items:flex-start; margin-bottom:8px;">
+                <div>
+                  <div class="kicker" style="margin:0 0 10px;">Featured project</div>
+                  <h2 style="margin:0; font-size:20px; letter-spacing:-.01em;">FNaV</h2>
+                  <p style="margin:8px 0 0; color:var(--muted); font-size:14px;">
+                    A FNaF fan-game inspired by the devs' school.</p>
+                </div>
+                <span class="badge">2026</span>
+              </div>
+              <div style="display:flex; gap:12px; align-items:center; margin-top:14px;">
+                <a class="btn" href="#" data-open-project="p2" style="padding:12px 12px;">View game→</a>
+                <span class="badge">Game</span>
+              </div>
+            </div>
+
+            <div class="panel span-6">
+              <div class="kicker" style="margin:0 0 10px;">Team focus</div>
+              <ul style="margin:0; padding-left:18px; color:var(--muted);">
+                <li>Concept-to-game development</li>
+                <li><span style="color: var(--muted);">High quality sound ambience and songs<br></span></li>
+                <li>Scripts that interest the public and are worth watching and staying to the end</li>
+                <li>Not just games, but animated series too</li>
+              </ul>
+              <div style="margin-top:14px; color:var(--muted); font-weight:650; font-size:13.5px;">
+                Tip: We usually update our public via discord servers! We are also starting to do it via twitter.</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel" style="padding:0; overflow:hidden;">
+          <div style="padding:18px;">
+            <div class="kicker" style="margin:0 0 12px;">Latest works</div>
+            <div class="grid" style="gap:12px;">
+              <article class="art-tile" style="grid-column: span 12;" data-open-project="p2" title="Open project case study">
+                <div class="thumb" style="height:190px;">
+                  <img alt="Artwork preview for Five Nights at Viver's" src="sources/fnav_beta_thumb.png" />
+                </div>
+                <div class="tile-meta">
+                  <div>
+                    <h3>Five Nights at Viver's</h3>
+                    <p>Horror Game Series · 2026</p>
+                  </div>
+                  <span class="badge">Game</span>
+                </div>
+              </article>
+              <article class="art-tile" style="grid-column: span 12;" data-open-project="p3" title="Open project case study">
+                <div class="thumb" style="height:190px;">
+                  <img alt="Artwork preview for Asym Smth So Retro" src="/personal-portifolio/sources/images/assr_thumb.webp?auto=format&fit=crop&w=1400&q=70" />
+                </div>
+                <div class="tile-meta">
+                  <div>
+                    <h3>Asym Smth So Retro</h3>
+                    <p>Asymmetrical Game · 2025</p>
+                  </div>
+                  <span class="badge"><i>Game (Paused)</i></span>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div style="padding:14px 18px; border-top:1px solid rgba(255,255,255,.10);">
+            <div style="display:flex; justify-content:space-between; gap:14px; align-items:center;">
+              <div style="color:var(--muted); font-weight:650; font-size:13.5px;">Interest in our works?</div>
+              <a class="btn" href="#" data-nav="gallery" style="padding:10px 12px;">See all →</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section style="padding:20px 0">
+      <div class="panel">
+        <h2>Latest News</h2>
+        <ul>
+          <li>FNAV Beta in development</li>
+          <li>ASSR development is paused</li>
+          <li>New series in development, for now also paused</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section data-page="gallery" aria-label="Gallery">
+      <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:flex-end;">
+        <div>
+          <div class="kicker">PROJECTS</div>
+          <h2 style="margin:0; font-size:28px; letter-spacing:-.01em;">Selected projects</h2>
+          <p style="margin:10px 0 0; color:var(--muted); max-width:68ch;">
+            Click a project tile to open the project page. Use filters to narrow by type or year.
+          </p>
+        </div>
+        <span class="badge" id="resultCount">Loading…</span>
+      </div>
+
+      <div class="filters" role="toolbar" aria-label="Gallery filters">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="horror">Horror</button>
+        <button class="chip" type="button" data-filter="digital">Digital</button>
+        <button class="chip" type="button" data-filter="asym">Asymetric</button>
+        <button class="chip" type="button" data-filter="2026">2026</button>
+        <button class="chip" type="button" data-filter="2025">2025</button>
+      </div>
+
+      <div class="grid" id="galleryGrid" aria-live="polite"></div>
+    </section>
+
+    <!-- PROJECT -->
+    <section data-page="project" aria-label="Project">
+      <div class="kicker" id="projKicker">Project</div>
+
+      <div class="project-header">
+        <div>
+          <h2 id="projTitle">Project Title</h2>
+          <div class="meta-row" id="projMeta"></div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <button class="btn" type="button" data-nav="gallery">← Back to gallery</button>
+          <button class="btn ghost" type="button" id="shareBtn">Copy link (demo)</button>
+        </div>
+      </div>
+
+      <div class="gallery-hero">
+        <img class="main-img" id="projMainImg" alt="Main project image" />
+        <div class="thumb-row" id="projThumbRow" aria-label="Project image thumbnails"></div>
+      </div>
+
+      <div style="margin-top:18px;" class="card-grid">
+        <article class="panel span-8">
+          <h3 style="margin:0 0 10px; font-size:16px;">Overview</h3>
+          <p id="projDesc" style="margin:0; color:var(--muted);"></p>
+          <div class="divider"></div>
+          <div class="card-grid">
+            <div class="span-6">
+              <h3 style="margin:0 0 10px; font-size:16px;">Main Characters</h3>
+              <p id="projProcess" style="margin:0; color:var(--muted); font-size:14px; white-space: pre-line;"></p>
+            </div>
+            <div class="span-6">
+              <h3 style="margin:0 0 10px; font-size:16px;">Gameplay mechanics</h3>
+              <p id="projIntent" style="margin:0; color:var(--muted); font-size:14px;"></p>
+            </div>
+          </div>
+        </article>
+
+        <aside class="panel span-4">
+          <h3 style="margin:0 0 10px; font-size:16px;">Credits &amp; details</h3>
+          <div id="projCredits" style="color:var(--muted); font-size:14px; display:grid; gap:8px;"><div><div style="display:flex; gap:10px; align-items:flex-start;">
+            <span class="badge" style="padding:7px 10px;">Developers</span>
+            <div style="margin-top:6px;">SouSand, norvyn3, v, aspazn</div>
+          </div></div><div><div style="display:flex; gap:10px; align-items:flex-start;">
+            <span class="badge" style="padding:7px 10px;">Tags</span>
+            <div style="margin-top:6px;">Horror Game · FNaF Fan-game · Available for PC &amp; Android</div>
+          </div></div><div><div style="display:flex; gap:10px; align-items:flex-start;">
+            <span class="badge" style="padding:7px 10px;">Type</span>
+            <div style="margin-top:6px;">Singleplayer</div>
+          </div></div><div><div style="display:flex; gap:10px; align-items:flex-start;">
+            <span class="badge" style="padding:7px 10px;">State</span>
+            <div style="margin-top:6px;">Demo/Beta (Open for beta-testers)</div>
+          </div></div><div><div style="display:flex; gap:10px; align-items:flex-start;">
+            <span class="badge" style="padding:7px 10px;">Platforms</span>
+            <div style="margin-top:6px;">GameJolt (Windows, Linux &amp; Android) &amp; PC (Itch.io)</div>
+          </div></div></div>
+          <div class="divider"></div>
+            Currently, the links below only redirect to FNaV related pages. 
+          <button class="btn primary" type="button" id="openGamejoltFNAV1" style="width:100%; justify-content:center; margin-bottom: 8px;">
+            Check out on GameJolt
+          </button>
+          <button class="btn primary" type="button" id="openitchFNAV1" style="width:100%; justify-content:center;">
+            Check out on Itch.io
+          </button>
+          <div style="margin-top:10px; color:var(--muted); font-size:13px;">
+            This game is primarily updated on our <a href="https://discord.gg/WXFnj3peAw" style="text-decoration: underline;">discord server.</a>&nbsp;Looking for ASSR's? <a href="https://discord.gg/dBVT85pgCX" style="text-decoration: underline;">Here.</a></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ARTISTS -->
+    <section data-page="artists" aria-label="Artists">
+      <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:flex-end;">
+        <div>
+          <div class="kicker">Artists</div>
+          <h2 style="margin:0; font-size:28px; letter-spacing:-.01em;">Meet the team</h2>
+          <p style="margin:10px 0 0; color:var(--muted); max-width:68ch;">Meet everyone who is part of SouSand Artworks Team and helped create these awesome artworks!</p>
+        </div>
+        <span class="badge">Hired/Founders</span>
+      </div>
+
+      <div class="grid" id="artistGrid" style="margin-top:18px;"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section data-page="about" aria-label="About">
+      <div class="kicker">About</div>
+      <h2 style="margin:0; font-size:28px; letter-spacing:-.01em;">A creative studio approach</h2>
+      <div style="margin-top:14px;" class="card-grid">
+        <div class="panel span-6">
+          <h3 style="margin:0 0 10px; font-size:16px;">Mission</h3>
+          <p style="margin:0; color:var(--muted);">
+            We build artwork through creativity: concept development, testing, analysing, discussions, and everything needed for a masterpiece to come at the end.</p>
+        </div>
+        <div class="panel span-6">
+          <h3 style="margin:0 0 10px; font-size:16px;">How we work</h3>
+          <ul style="margin:0; padding-left:18px; color:var(--muted);">
+            <li>Decisions stay till the end</li>
+            <li>Deciding matters</li>
+            <li>Every opinion is welcome</li>
+            <li>Avoid dramas</li>
+          </ul>
+        </div>
+        <div class="panel span-12">
+          <h3 style="margin:0 0 10px; font-size:16px;">What you’ll get</h3>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="badge">High-res and high-quality artworks</span>
+            <span class="badge">Interesting narratives</span>
+            <span class="badge">Series worth staying up to watch what will turn out on the end</span>
+            <span class="badge">Consistent visual style</span>
+            <span class="badge">Clear communication</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section data-page="contact" aria-label="Contact">
+      <div class="kicker">Contact</div>
+      <h2 style="margin:0; font-size:28px; letter-spacing:-.01em;">Commission &amp; collaboration inquiries</h2>
+      <p style="margin:10px 0 18px; color:var(--muted); max-width:72ch;">
+        In this demo, the form won’t send anywhere—press “Submit demo” to see how your UI should behave.
+      </p>
+
+      <div class="card-grid">
+        <div class="panel span-8">
+          <form id="contactForm">
+            <div class="form-row">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="interest">Interest</label>
+                <select id="interest" name="interest">
+                  <option>Commission</option>
+                  <option>Collaboration</option>
+                  <option>Licensing / Press</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="budget">Budget range</label>
+                <select id="budget" name="budget">
+                  <option>$500–$1,500</option>
+                  <option>$1,500–$3,000</option>
+                  <option>$3,000–$7,500</option>
+                  <option>$7,500+</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message"
+                        placeholder="Tell us timeline, size/material preferences, references, and what you’re looking to achieve."
+                        required></textarea>
+            </div>
+
+            <div class="cta-row">
+              <button class="btn primary" type="submit">Submit demo</button>
+              <button class="btn" type="button" onclick="resetForm()">Reset</button>
+            </div>
+
+            <div id="formStatus" style="color:var(--muted); font-weight:650; font-size:13.5px;"></div>
+          </form>
+        </div>
+
+        <aside class="panel span-4">
+          <h3 style="margin:0 0 10px; font-size:16px;">Quick details</h3>
+          <div style="display:grid; gap:10px; color:var(--muted); font-size:14px;">
+            <div><span class="badge">Email</span><div style="margin-top:6px;">hello@example.com</div></div>
+            <div><span class="badge">Response time</span><div style="margin-top:6px;">1–3 business days</div></div>
+            <div><span class="badge">Location</span><div style="margin-top:6px;">Worldwide collaborations</div></div>
+          </div>
+          <div class="divider"></div>
+          <div style="color:var(--muted); font-size:13.5px;">
+            Tip: include timeline + dimensions + intended display/install context for faster quoting.
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>
+        <div class="logo" aria-hidden="true"><img src="sources/logo.png" alt="Logo"></div>
+        <div style="font-weight:850; color:var(--text); margin-bottom:6px;">SouSand Artworks Studio</div>
+        <div>Founded by SouSand! :D</div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="#" data-nav="gallery" style="padding:10px 12px;">Projects</a>
+        <a class="btn" href="#" data-nav="artists" style="padding:10px 12px;">Artists</a>
+        <a class="btn" href="#" data-nav="contact" style="padding:10px 12px;">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox modal -->
+  <div class="modal" id="lightbox" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-label="Artwork preview">
+      <div class="modal-top">
+        <div class="title" id="lightboxTitle">Artwork</div>
+        <button class="icon-btn" type="button" id="lightboxClose">Close</button>
+      </div>
+      <img class="modal-img" id="lightboxImg" alt="Expanded artwork" />
+      <div class="modal-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    const projects = [
+      {
+        id: "p1",
+        title: "NoWayBack Machine",
+        year: 2026,
+        medium: "Horror",
+        tags: ["horror","2026","digital"],
+        badge: "Horror Game Series",
+        cover: "/sources/main-hall-rbx.png?auto=format&fit=crop&w=1400&q=70",
+        images: [
+          { src: "/sources/main-hall-rbx.png?auto=format&fit=crop&w=1600&q=70", caption: "Reflective surfaces and layered texture." },
+          { src: "/personal-portifolio/sources/images/title-screen.png?auto=format&fit=crop&w=1600&q=70", caption: "Detail: micro-patterns in the finish." },
+          { src: "/personal-portifolio/sources/images/small-storage-room.png?auto=format&fit=crop&w=1600&q=70", caption: "Installation view under shifting light." },
+          { src: "/personal-portifolio/sources/images/nowaybackmachine-ss.png?auto=format&fit=crop&w=1600&q=70", caption: "Process study: material tests and iterations." }
+        ],
+        desc: "NoWayBack Machine tells the narrative if Roblox was a science lab corporation behind the covers of just a game platform.",
+        process: "Builderman: Main antagonist of the game, a guide for our protagonist.\nHandUnit: Main villain of the game.",
+        intent: "Inspired by FNaF: SL and Poppy Playtime (2, 3 & 5)",
+        credits: {
+          Developers: "SouSand, norvyn3, v",
+          Tags: "Horror Game · FNaF: SL Fan-game · Available for Roblox",
+          Type: "Singleplayer",
+          State: "Beta (Development Paused)",
+          Platforms: "Roblox (PC, Mobile & Console)"
+        }
+      },
+      {
+        id: "p2",
+        title: "Five Nights at Viver's",
+        year: 2026,
+        medium: "Horror Game Series",
+        tags: ["horror","2026","digital"],
+        badge: "Horror Game Series",
+        cover: "sources/fnav_beta_thumb.png",
+        images: [
+          { src: "sources/fnav_beta_thumb.png", caption: "Bad drawing of Mrs. Flowers on irl Viver school" },
+        ],
+        desc: "A game series based on FNaF (FNaV 1 being inspired by FNaF 3) and set in the developers' school.",
+        process: "Angela Martinéz: The protagonist of the game, an ex-student of the Viver school.\nMrs. Flowers: The main antagonist of the game, a teacher of Group 2, responsible for the 3-4 year old kids at the school.\nMr. Rose: Mrs. Flowers' husband, Kids Zone Council.\nInstructor: The phone guy.",
+        intent: "Inspired by FNAF 3.",
+        credits: {
+          Developers: "SouSand, norvyn3, v, aspazn",
+          Tags: "Horror Game · FNaF Fan-game · Available for PC & Android",
+          Type: "Singleplayer",
+          State: "Demo/Beta (Open for beta-testers)",
+          Platforms: "GameJolt (Windows, Linux & Android) & PC (Itch.io)"
+        }
+      },
+      {
+        id: "p3",
+        title: "Asym Smth So Retro",
+        year: 2025,
+        medium: "Asymmetrical Game",
+        tags: ["asym","2025","digital"],
+        badge: "Asymetrical Roblox Game",
+        cover: "/personal-portifolio/sources/images/assr_thumb.webp?auto=format&fit=crop&w=1400&q=70",
+        images: [
+          { src: "/personal-portifolio/sources/images/assr_thumb.webp?auto=format&fit=crop&w=1600&q=70", caption: "thumbnail" },
+          ],
+        desc: "An asymmetrical multiplayer retro game concept currently on pause for active development.",
+        process: "Core loop designed around asynchronous player roles and vintage retro Roblox aesthetics.",
+        intent: "Inspired by Forsaken and Die of Death.",
+        credits: {
+          Artists: "SouSand Team",
+          Role: "Concept & Prototyping",
+          Dimensions: "Multiplayer",
+          Materials: "Game Engine",
+          Location: "PC (Paused)"
+        }
+      }
+    ];
+
+    const artists = [
+      {
+        name: "SouSand",
+        role: "Lead Developer, Story Writer and Director",
+        bio: "Directs project vision, UI Designing, programming, and core game systems.",
+        avatar: "sources/sou_sand.webp",
+        links: { YouTube: "#", GitHub: "#", Portfolio: "index.html" },
+        selected: ["Five Nights at Viver's"]
+      },
+      {
+        name: "norvyn3",
+        role: "Writing and Creative Direction",
+        bio: "Helps writing the stories and gives ideas/opinions that most of the times mold the final artwork.",
+        avatar: "sources/norvyn3.webp",
+        links: { Reddit: "https://www.reddit.com/u/Norvyn3Witch", Twitter: "https://www.reddit.com/u/Norvyn3Witch" },
+        selected: ["Asym Smth So Retro"]
+      },
+      {
+        name: "v",
+        role: "Compositor and Artist",
+        bio: "Composes songs for the games and artworks.",
+        avatar: "sources/v.webp",
+        links: { YouTube: "https://www.youtube.com/channel/UCh9CbdimzJ4wUfF9nSleQeg" },
+        selected: ["Asym Smth So Retro"]
+      }
+    ];
+
+    const pages = ["home","gallery","artists","about","contact","project"];
+    function showPage(name){
+      pages.forEach(p=>{
+        const el = document.querySelector(`[data-page="${p}"]`);
+        if(el) {
+          if(p === name) {
+            el.classList.add("active");
+            el.style.display = "block";
+          } else {
+            el.classList.remove("active");
+            el.style.display = "none";
+          }
+        }
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.querySelectorAll("[data-nav]").forEach(a=>{
+      a.addEventListener("click", (e)=>{
+        const name = a.getAttribute("data-nav");
+        e.preventDefault();
+        showPage(name);
+      });
+    });
+
+    const galleryGrid = document.getElementById("galleryGrid");
+    const resultCount = document.getElementById("resultCount");
+    const filterButtons = Array.from(document.querySelectorAll(".chip[data-filter]"));
+    let activeFilter = "all";
+
+    function matchesFilter(project, filter){
+      if(filter === "all") return true;
+      return project.tags.includes(filter);
+    }
+
+    function renderGallery(){
+      const filtered = projects.filter(p => matchesFilter(p, activeFilter));
+      if(resultCount) resultCount.textContent = filtered.length + " projects";
+      if(!galleryGrid) return;
+      galleryGrid.innerHTML = "";
+
+      filtered.forEach(p=>{
+        const tile = document.createElement("article");
+        tile.className = "art-tile";
+        tile.setAttribute("role","button");
+        tile.tabIndex = 0;
+        tile.dataset.openProject = p.id;
+
+        tile.innerHTML = `
+          <div class="thumb">
+            <img alt="Preview for ${escapeHtml(p.title)}" src="${p.cover}" loading="lazy" />
+          </div>
+          <div class="tile-meta">
+            <div>
+              <h3>${escapeHtml(p.title)}</h3>
+              <p>${escapeHtml(p.medium)} · ${p.year}</p>
+            </div>
+            <span class="badge">${escapeHtml(p.badge)}</span>
+          </div>
+        `;
+
+        const open = ()=>{ openProject(p.id); };
+        tile.addEventListener("click", open);
+        tile.addEventListener("keydown", (ev)=>{
+          if(ev.key === "Enter" || ev.key === " "){ ev.preventDefault(); open(); }
+        });
+
+        galleryGrid.appendChild(tile);
+      });
+    }
+
+    filterButtons.forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        filterButtons.forEach(b=>b.setAttribute("aria-pressed","false"));
+        btn.setAttribute("aria-pressed","true");
+        activeFilter = btn.dataset.filter;
+        renderGallery();
+      });
+    });
+
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+      }[m]));
+    }
+
+    const projTitle = document.getElementById("projTitle");
+    const projKicker = document.getElementById("projKicker");
+    const projMeta = document.getElementById("projMeta");
+    const projMainImg = document.getElementById("projMainImg");
+    const projThumbRow = document.getElementById("projThumbRow");
+    const projDesc = document.getElementById("projDesc");
+    const projProcess = document.getElementById("projProcess");
+    const projIntent = document.getElementById("projIntent");
+    const projCredits = document.getElementById("projCredits");
+    const openGamejoltFNAV1 = document.getElementById("openGamejoltFNAV1");
+    const openitchFNAV1 = document.getElementById("openitchFNAV1");
+    const shareBtn = document.getElementById("shareBtn");
+
+    function openProject(id){
+      const p = projects.find(x=>x.id===id);
+      if(!p) return;
+
+      if(projKicker) projKicker.textContent = "Project";
+      if(projTitle) projTitle.textContent = p.title;
+
+      if(projMeta) {
+        projMeta.innerHTML = `
+          <span class="badge">${escapeHtml(p.year)}</span>
+          <span class="badge">${escapeHtml(p.medium)}</span>
+          <span style="color:var(--muted); font-weight:700;">${escapeHtml("Tap thumbnails for more images")}</span>
+        `;
+      }
+
+      if(projMainImg) {
+        projMainImg.src = p.images[0].src;
+        projMainImg.alt = p.images[0].caption || p.title;
+      }
+
+      if(projDesc) projDesc.textContent = p.desc;
+      if(projProcess) projProcess.textContent = p.process;
+      if(projIntent) projIntent.textContent = p.intent;
+
+      if(projCredits) {
+        projCredits.innerHTML = "";
+        Object.entries(p.credits).forEach(([k,v])=>{
+          const row = document.createElement("div");
+          row.innerHTML = `<div style="display:flex; gap:10px; align-items:flex-start;">
+            <span class="badge" style="padding:7px 10px;">${escapeHtml(k)}</span>
+            <div style="margin-top:6px;">${escapeHtml(v)}</div>
+          </div>`;
+          projCredits.appendChild(row);
+        });
+      }
+
+      if(projThumbRow) {
+        projThumbRow.innerHTML = "";
+        p.images.forEach((img, idx)=>{
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "thumb-btn";
+          b.setAttribute("aria-current", idx===0 ? "true" : "false");
+          b.title = img.caption || `Image ${idx+1}`;
+
+          b.innerHTML = `<img alt="${escapeHtml(p.title)} thumbnail ${idx+1}" src="${img.src}" loading="lazy" />`;
+          b.addEventListener("click", ()=>{
+            if(projMainImg) {
+              projMainImg.src = img.src;
+              projMainImg.alt = img.caption || p.title;
+            }
+
+            Array.from(projThumbRow.querySelectorAll(".thumb-btn"))
+              .forEach(x=>x.setAttribute("aria-current","false"));
+            b.setAttribute("aria-current","true");
+          });
+
+          b.addEventListener("dblclick", ()=>{
+            openLightbox(p.title, img.src, img.caption || "");
+          });
+
+          projThumbRow.appendChild(b);
+        });
+      }
+
+      if(openGamejoltFNAV1) {
+        openGamejoltFNAV1.onclick = () => { window.open("https://gamejolt.com", "_blank"); };
+      }
+      if(openitchFNAV1) {
+        openitchFNAV1.onclick = () => { window.open("https://itch.io", "_blank"); };
+      }
+
+      if(shareBtn) {
+        shareBtn.onclick = async ()=>{
+          const url = window.location.href.split("#")[0] + "#project=" + encodeURIComponent(p.id);
+          try{
+            await navigator.clipboard.writeText(url);
+            shareBtn.textContent = "Copied!";
+            setTimeout(()=>shareBtn.textContent = "Copy link (demo)", 1200);
+          }catch{
+            alert("Copy failed (demo). URL:\n" + url);
+          }
+        };
+      }
+
+      showPage("project");
+      window.location.hash = "project=" + encodeURIComponent(p.id);
+    }
+
+    document.querySelectorAll("[data-open-project]").forEach(el=>{
+      el.addEventListener("click", (e)=>{
+        e.preventDefault();
+        openProject(el.getAttribute("data-open-project"));
+      });
+    });
+
+    const artistGrid = document.getElementById("artistGrid");
+    function renderArtists(){
+      if(!artistGrid) return;
+      artistGrid.innerHTML = "";
+      artists.forEach(a=>{
+        const card = document.createElement("article");
+        card.className = "person span-6";
+        card.innerHTML = `
+          <div class="avatar"><img alt="${escapeHtml(a.name)} avatar" src="${a.avatar}" loading="lazy" /></div>
+          <div style="flex:1;">
+            <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start; flex-wrap:wrap;">
+              <div>
+                <h3>${escapeHtml(a.name)}</h3>
+                <p>${escapeHtml(a.role)}</p>
+              </div>
+              <span class="badge">Selected works</span>
+            </div>
+            <p style="margin-top:10px;">${escapeHtml(a.bio)}</p>
+            <div class="divider" style="margin:12px 0;"></div>
+            <div style="color:var(--muted); font-weight:750; font-size:13.5px; margin-bottom:8px;">Works</div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
+              ${a.selected.map(t=>`<span class="badge">${escapeHtml(t)}</span>`).join("")}
+            </div>
+            <div class="social">
+              ${Object.entries(a.links).map(([label,href])=>`<a href="${href}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`).join("")}
+            </div>
+          </div>
+        `;
+        artistGrid.appendChild(card);
+      });
+    }
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    function openLightbox(title, imgSrc, caption){
+      if(!lightbox) return;
+      if(lightboxTitle) lightboxTitle.textContent = title;
+      if(lightboxImg) lightboxImg.src = imgSrc;
+      if(lightboxCaption) lightboxCaption.textContent = caption || "";
+      lightbox.setAttribute("open","");
+      lightbox.setAttribute("aria-hidden","false");
+    }
+    function closeLightbox(){
+      if(!lightbox) return;
+      lightbox.removeAttribute("open");
+      lightbox.setAttribute("aria-hidden","true");
+    }
+    if(lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+    if(lightbox) {
+      lightbox.addEventListener("click", (e)=>{
+        if(e.target === lightbox) closeLightbox();
+      });
+    }
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape") closeLightbox();
+    });
+
+    const contactForm = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
+    function resetForm(){
+      if(contactForm) contactForm.reset();
+      if(formStatus) formStatus.textContent = "";
+    }
+    window.resetForm = resetForm;
+
+    if(contactForm) {
+      contactForm.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(contactForm).entries());
+        if(formStatus) formStatus.textContent = "Submitted (demo). Message prepared locally—wire this to your backend later.";
+        console.log("Contact demo payload:", data);
+      });
+    }
+
+    // Initial setups
+    renderGallery();
+    renderArtists();
+    showPage("home"); // Enforces starting page display safely
+
+    function initFromHash(){
+      const h = window.location.hash || "";
+      const m = h.match(/project=([^&]+)/);
+      if(m){
+        const id = decodeURIComponent(m[1]);
+        openProject(id);
+      }
+    }
+    initFromHash();
+
+    document.addEventListener("dblclick", (e)=>{
+      const tile = e.target.closest?.(".art-tile");
+      if(!tile) return;
+      const pid = tile.dataset.openProject;
+      const p = projects.find(x=>x.id===pid);
+      if(!p) return;
+      openLightbox(p.title, p.images[0].src, p.images[0].caption || "");
+    });
+  </script>
+</body>
+</html>
