@@ -1,5 +1,5 @@
 NOTE: The empty spaces are intentional, in the original end dialog, they are blurred. It's some lore related stuff.
-Written by AmpleVarious.c4
+Written by SouSand
 
 1: Look at Player. Player finally escaped.
 2: Wow...
