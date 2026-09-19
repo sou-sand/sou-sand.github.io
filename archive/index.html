@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SouSand Archive | API &amp; Resources</title>
+        <link rel="stylesheet" href="https://sou-sand.github.io/personal-portifolio/css/wp_main.css" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <style>
+            body {
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            .archive-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 40px;
+                border-bottom: 2px solid var(--border-color);
+                background-color: var(--bg-color);
+            }
+
+            .archive-logo-area {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+            /* Container para a imagem/logo do cabeçalho */
+            .header-img-holder {
+                width: 50px;
+                height: 50px;
+                border: 2px solid var(--border-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .header-img-holder img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .archive-logo-text h1 {
+                font-size: 2rem;
+                font-weight: 300;
+                text-transform: lowercase;
+                margin: 0;
+                line-height: 1;
+            }
+
+            .archive-logo-text span {
+                font-size: 1rem;
+                color: var(--secondary-text);
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin-top: 4px;
+                display: block;
+            }
+
+            .archive-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .archive-nav a {
+                color: var(--text-color);
+                text-decoration: none;
+                font-size: 1.1rem;
+                font-weight: 300;
+                text-transform: lowercase;
+            }
+
+            .archive-nav a:hover, .archive-nav a.active {
+                color: var(--accent-color);
+            }
+
+            .archive-container {
+                max-width: 1200px;
+                margin: 40px auto;
+                padding: 0 20px;
+            }
+
+            .archive-intro {
+                margin-bottom: 40px;
+            }
+
+            .archive-intro h2 {
+                font-size: 2.5rem;
+                font-weight: 300;
+                margin: 0 0 10px 0;
+                text-transform: lowercase;
+            }
+
+            .archive-intro p {
+                font-size: 1.1rem;
+                color: var(--secondary-text);
+                margin: 0;
+            }
+
+            /* Estilo dos Cards com espaço para imagem à direita */
+            .roadway-card {
+                border: 2px solid var(--border-color);
+                padding: 30px;
+                margin-bottom: 30px;
+                background-color: var(--bg-color);
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .roadway-content {
+                flex: 1;
+            }
+
+            /* Espaço para imagem/ícone da seção */
+            .roadway-img-holder {
+                width: 120px;
+                height: 120px;
+                border: 2px dashed var(--border-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--secondary-text);
+                font-size: 0.8rem;
+                text-align: center;
+                flex-shrink: 0;
+                background: rgba(255, 255, 255, 0.02);
+            }
+
+            .roadway-img-holder img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .roadway-card h3 {
+                font-size: 1.8rem;
+                font-weight: 400;
+                margin: 0 0 5px 0;
+                text-transform: lowercase;
+            }
+
+            .roadway-card .subtitle {
+                font-size: 0.95rem;
+                color: var(--secondary-text);
+                margin-bottom: 15px;
+            }
+
+            .roadway-card p {
+                font-size: 1rem;
+                line-height: 1.5;
+                margin-bottom: 20px;
+            }
+
+            .action-buttons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 15px;
+            }
+
+            .archive-btn {
+                background: transparent;
+                border: 2px solid var(--text-color);
+                color: var(--text-color);
+                padding: 8px 18px;
+                font-family: inherit;
+                font-size: 0.95rem;
+                text-transform: lowercase;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                transition: background 0.2s, color 0.2s;
+            }
+
+            .archive-btn:hover {
+                background: var(--text-color);
+                color: var(--bg-color);
+            }
+
+            @media (max-width: 768px) {
+                .roadway-card {
+                    flex-direction: column-reverse;
+                }
+                .roadway-img-holder {
+                    width: 100%;
+                    height: 80px;
+                }
+            }
+        </style>
+    </head>
+    <body class="light-mode">
+
+        <!-- Top Bar -->
+        <header class="archive-header">
+            <div class="archive-logo-area">
+                <div class="header-img-holder">
+                    <!-- Substitua o src pela imagem do logo se desejar -->
+                    <img src="../personal-portifolio/sources/images/ss_artworks.png" alt="Logo" onerror="this.style.display='none'">
+                </div>
+                <div class="archive-logo-text">
+                    <h1>SouSand</h1>
+                    <span>Archive</span>
+                </div>
+            </div>
+
+            <nav class="archive-nav">
+                <a href="#" class="active">Home (.)</a>
+                <a href="#" onclick="openAccountPopup(); return false;">Account</a>
+                <a href="#">Settings</a>
+                <a href="#">API Calls</a>
+                <a href="#">API Management</a>
+                <a href="#">News</a>
+                <a href="#">Projects Graveyard</a>
+                <button class="theme-toggle" onclick="toggleTheme()" style="padding: 4px 10px; font-size: 0.85rem;">theme</button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="archive-container">
+            <div class="archive-intro">
+                <h2>All files & whatever you need is HERE!</h2>
+                <p>tutorials, documents, sousand's projects graveyard, assets, templates, everything!</p>
+            </div>
+
+            <!-- Iris Roadway -->
+            <div class="roadway-card">
+                <div class="roadway-content">
+                    <h3>Iris (Assetic)</h3>
+                    <div class="subtitle">(Internal Roadway Instructional Sector)</div>
+                    <p>
+                        <strong>Default roadway for the archive</strong><br>
+                        Use <code>@#key=iris[arc]</code> as the API roadway and <code>RDI_</code> as the instructor key for the API key.
+                    </p>
+                    <div class="action-buttons">
+                        <button class="archive-btn" onclick="alert('URL Copied!')">Copy URL</button>
+                        <button class="archive-btn" onclick="alert('API Key Copied!')">Copy default API key</button>
+                        <button class="archive-btn" onclick="alert('Webhook Copied!')">Copy public webhook</button>
+                        <button class="archive-btn" onclick="alert('Roadway Copied!')">Copy roadway</button>
+                        <button class="archive-btn" onclick="alert('New roadway created')">New roadway</button>
+                        <button class="archive-btn" onclick="alert('Managing roadways...')">Manage</button>
+                    </div>
+                </div>
+                <!-- Image Holder para Iris -->
+                <div class="roadway-img-holder">
+                    <span>[ Iris Image ]</span>
+                </div>
+            </div>
+
+            <!-- Docker Roadway -->
+            <div class="roadway-card">
+                <div class="roadway-content">
+                    <h3>Docker (Documental)</h3>
+                    <div class="subtitle">(Document Kernel Explorer Roadway)</div>
+                    <p>
+                        Use <code>@#key=docker[arcV2](v2)</code> as the API roadway and <code>"RD_D_"</code> as the instructor key for the API key.
+                    </p>
+                    <div class="action-buttons">
+                        <button class="archive-btn" onclick="alert('URL Copied!')">Copy URL</button>
+                        <button class="archive-btn" onclick="openAccountPopup()">Copy default API key</button>
+                        <button class="archive-btn" onclick="alert('Webhook Copied!')">Copy public webhook</button>
+                        <button class="archive-btn" onclick="alert('Roadway Copied!')">Copy roadway</button>
+                        <button class="archive-btn" onclick="alert('New roadway created')">New roadway</button>
+                        <button class="archive-btn" onclick="alert('Managing roadways...')">Manage</button>
+                    </div>
+                </div>
+                <!-- Image Holder para Docker -->
+                <div class="roadway-img-holder">
+                    <span>[ Docker Image ]</span>
+                </div>
+            </div>
+
+            <!-- SandStyle Section -->
+            <div class="roadway-card">
+                <div class="roadway-content">
+                    <h3>SandStyle</h3>
+                    <p class="subtitle" style="margin-bottom: 15px;">Style used in SouSand Artworks.</p>
+                    
+                    <p><strong>V1:</strong></p>
+                    <div class="action-buttons" style="margin-bottom: 15px;">
+                        <button class="archive-btn" onclick="window.open('#', '_blank')">Bible</button>
+                    </div>
+
+                    <p><strong>V2:</strong></p>
+                    <div class="action-buttons">
+                        <button class="archive-btn" onclick="window.open('#', '_blank')">Classic - Bible</button>
+                        <button class="archive-btn" onclick="window.open('#', '_blank')">Dynamic - Bible</button>
+                    </div>
+                </div>
+                <!-- Image Holder para SandStyle -->
+                <div class="roadway-img-holder">
+                    <span>[ Style Preview ]</span>
+                </div>
+            </div>
+
+            <!-- Modal de Conta (Account Popup) -->
+            <div id="account-popup" class="metro-overlay">
+                <div class="metro-modal">
+                    <div class="modal-text-content">
+                        <h2 class="modal-title">In order to do that...</h2>
+                        <p class="modal-description">
+                            you need a SouSand Archive Account.
+                        </p>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button class="modal-btn" onclick="window.location.href='mailto:sousand@proton.me'">
+                            Create Account
+                        </button>
+                        <button class="modal-btn" onclick="window.open('https://discord.gg/msWnUDjstp', '_blank')">
+                            Login
+                        </button>
+                        <button class="modal-secondary-btn" onclick="closePopup()">close</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script>
+            function toggleTheme() {
+                const body = document.body;
+                body.classList.toggle("light-mode");
+                const isLight = body.classList.contains("light-mode");
+                localStorage.setItem("theme", isLight ? "light" : "dark");
+            }
+            
+            window.onload = () => {
+                const savedTheme = localStorage.getItem("theme");
+                if (savedTheme === "dark") {
+                    document.body.classList.remove("light-mode");
+                } else if (savedTheme === "light") {
+                    document.body.classList.add("light-mode");
+                }
+            };
+
+            function openAccountPopup() {
+                const popup = document.getElementById("account-popup");
+                popup.style.display = "block";
+            }
+
+            function closePopup() {
+                const popup = document.getElementById("account-popup");
+                const modal = popup.querySelector(".metro-modal");
+                modal.style.transform = "translateY(-100%)";
+                modal.style.transition = "transform 0.3s ease-in";
+
+                setTimeout(() => {
+                    popup.style.display = "none";
+                    modal.style.transform = ""; 
+                }, 300);
+            }
+        </script>
+    </body>
+</html>
