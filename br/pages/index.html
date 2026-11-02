@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SouSand | Portfolio (Metro Style)</title>
+        <link rel="stylesheet" href="https://sou-sand.github.io/personal-portifolio/css/wp_main.css" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    </head>
+    <body>
+        <header>
+            <div class="logo-container">
+                <img src="sources/images/ss_artworks.png" id="main-logo" class="team-logo" alt="SouSand Logo" />
+                <div class="brand">
+                    <p class="brand-p">SouSand's<br>Artworks</p>
+                </div>
+            </div>
+
+            <nav>
+                <a href="#about" class="active">about</a>
+                <a href="#projects">projects</a>
+                <a href="#news">news</a>
+                <a href="#socials">socials</a>
+                <a href="https://sou-sand.github.io/artworks/" target="_blank">artworks</a>
+                <button class="theme-toggle" onclick="toggleTheme()">switch theme (beta)</button>
+            </nav>
+        </header>
+            <input type="checkbox">
+
+        <!-- Seção Inicial / Apresentação -->
+        <section class="panorama-section" id="about">
+            <div class="visual-side single-img">
+                <img src="sources/images/pfp.jpg" class="photo-main" alt="Profile Picture" style="border-radius: 4px;" />
+            </div>
+
+            <div class="content-side">
+                <h1 class="display-title">hello, im sousand</h1>
+                <p class="display-desc">
+                    Tech nerd, developer, UI designer, creator, and writer based in Brazil.
+                </p>
+                <p class="display-desc-highlight">❝ you make the most random shit i've seen ❞</p>
+
+                <ul class="points">
+                    <li>i make games (Game Development)</li>
+                    <li>i love splatoon (Only played the first because i&nbsp;don't&nbsp;have any money)</li>
+                    <li>obsessed with random shit (Such as Metro UI)</li>
+                </ul>
+
+                <div class="button-group">
+                    <button class="wp-button" onclick="openContactPopup()">
+                        contact me
+                    </button>
+                    <button class="wp-button" onClick="location.href='mailto:sousand@proton.me';">
+                        send email
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Projetos Destaque (NoWayBack Machine) -->
+        <section class="panorama-section section-reversed">
+            <div class="visual-side single-img">
+                <img src="sources/images/nowaybackmachinelogo.png" class="photo-main" alt="NoWayBack Machine" />
+            </div>
+
+            <div class="content-side">
+                <h1 class="display-title">nowayback machine</h1>
+                <p class="display-desc">
+                    A game inspired by FNAF:SL &amp; Poppy Playtime, telling a fictional story about Roblox Corporation and Science Labs.
+                </p>
+                <p class="display-desc-highlight">featured project</p>
+
+                <ul class="points">
+                    <li>Atmospheric Horror Elements</li>
+                    <li>Immersive Lore &amp; VHS Tapes</li>
+                    <li>Custom Rigs &amp; Interactions</li>
+                </ul>
+
+                <div class="button-group">
+                    <button class="wp-button" onclick="openContactPopup()">
+                        view details
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Outros Projetos -->
+        <section class="panorama-section" id="projects">
+            <div class="visual-side single-img">
+                <img src="sources/images/novarevivalthumb.png" class="photo-main" alt="NovaRevival" />
+            </div>
+
+            <div class="content-side">
+                <h1 class="display-title">more projects</h1>
+                <p class="display-desc">
+                    Check out other works like NovaRevival, FNaV, ASSR, and my musical album Sedatives.
+                </p>
+                <ul class="points">
+                    <li>NovaRevival: Windows Phone custom ROM &amp; apps archive</li>
+                    <li>Sedatives: Indie pop/rock musical album</li>
+                    <li>ASSR &amp; FNaV: Indie horror game projects</li>
+                </ul>
+                <div class="button-group">
+                    <button class="wp-button" onclick="window.open('https://sou-sand.github.io/artworks/', '_blank')">
+                        visit artworks archive
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Notícias / Atualizações -->
+        <section class="panorama-section section-reversed" id="news">
+            <div class="visual-side single-img">
+                <img src="sources/images/soon_tm.png" class="photo-main" alt="News" />
+            </div>
+
+            <div class="content-side">
+                <h1 class="display-title">latest updates</h1>
+                <p class="display-desc">What's going on recently in development.</p>
+                <p class="display-desc-highlight">jul-aug 2026</p>
+                <ul class="points">
+                    <li>ASSR devlog series released on TikTok &amp; YouTube Shorts</li>
+                    <li>Website overhaul and username updates in progress</li>
+                    <li>New scripts and pilot writing for 'Hangout or smth'</li>
+                </ul>
+                <div class="button-group">
+                    <button class="wp-button" onClick="location.href='https://www.youtube.com/@sou-sand';">
+                        watch devlogs
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rodapé Estilo Metro -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>sousand</h3>
+                    <p>Portfolio structured under Metro UI principles.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>links</h4>
+                    <a href="https://sou-sand.github.io/artworks/" target="_blank">artworks website</a>
+                    <a href="mailto:sousand@proton.me">email contact</a>
+                    <a href="https://github.com/sou-sand" target="_blank">github profile</a>
+                </div>
+
+                <div class="footer-column" id="socials">
+                    <h4>social networks</h4>
+                    <a href="https://discord.gg/msWnUDjstp" target="_blank">discord server</a>
+                    <a href="https://www.youtube.com/@sou-sand" target="_blank">youtube channel</a>
+                    <a href="https://bsky.app/profile/sousand.bsky.social" target="_blank">bluesky</a>
+                    <a href="https://x.com/SouSandwejkanes" target="_blank">x (twitter)</a>
+                </div>
+
+                <div class="footer-column site-info">
+                    <p>&copy; 2026 sousand</p>
+                    <p>all rights reserved.</p>
+                    <p>inspired by windows phone metro ui</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Modal Estilo Metro (Popup de Contato/Ações) -->
+        <div id="contact-popup" class="metro-overlay">
+            <div class="metro-modal">
+                <div class="modal-text-content">
+                    <h2 class="modal-title">Get in touch! Don't be afraid</h2>
+                    <p class="modal-description">
+                        Want to talk about projects, collaboration, or just say hi? Choose where you want to reach out.
+                    </p>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="modal-btn" onclick="window.location.href='mailto:sousand@proton.me'">Email Me</button>
+                    <button class="modal-btn" onclick="window.open('https://discord.gg/msWnUDjstp', '_blank')">Join Discord</button>
+                    <button class="modal-secondary-btn" onclick="closePopup()">close</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function toggleTheme() {
+                const body = document.body;
+                const logo = document.getElementById("main-logo");
+
+                body.classList.toggle("light-mode");
+                const isLight = body.classList.contains("light-mode");
+
+                if (isLight) {
+                    logo.src = "sources/images/teamLogo_black.png";
+                } else {
+                    logo.src = "sources/images/teamLogo.png";
+                }
+
+                localStorage.setItem("theme", isLight ? "light" : "dark");
+            }
+
+            window.onload = () => {
+                const logo = document.getElementById("main-logo");
+                if (localStorage.getItem("theme") === "light") {
+                    document.body.classList.add("light-mode");
+                    logo.src = "sources/images/teamLogo_black.png";
+                }
+            };
+
+            function openContactPopup() {
+                const popup = document.getElementById("contact-popup");
+                popup.style.display = "block";
+            }
+
+            function closePopup() {
+                const popup = document.getElementById("contact-popup");
+                const modal = popup.querySelector(".metro-modal");
+                modal.style.transform = "translateY(-100%)";
+                modal.style.transition = "transform 0.3s ease-in";
+
+                setTimeout(() => {
+                    popup.style.display = "none";
+                    modal.style.transform = ""; 
+                }, 300);
+            }
+        </script>
+    </body>
+</html>
