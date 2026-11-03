@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SouSand | Resuming SouSand Artworks</title>
+    <link rel="icon" type="image/png" href="/personal-portifolio/sources/images/favicon.ico">
+    <style>
+        /* WP Classic Colors */
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-color: #0078D7;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-transform: lowercase;
+        }
+
+        h1 {
+            font-weight: 300;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        /* The Iconic Ball Animation */
+        .wp-loader {
+            position: relative;
+            width: 250px; 
+            height: 10px;
+        }
+
+        .wp-loader .dot {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #0078D7;
+            border-radius: 50%;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: wp-dots 3.5s infinite;
+        }
+
+        /* Staggered Delay */
+        .wp-loader .dot:nth-child(1) { animation-delay: 0.1s; }
+        .wp-loader .dot:nth-child(2) { animation-delay: 0.3s; }
+        .wp-loader .dot:nth-child(3) { animation-delay: 0.5s; }
+        .wp-loader .dot:nth-child(4) { animation-delay: 0.7s; }
+        .wp-loader .dot:nth-child(5) { animation-delay: 0.9s; }
+
+        @keyframes wp-dots {
+            0% {
+                transform: translateX(0px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            20% {
+                transform: translateX(100px); /* Initial flight in */
+                animation-timing-function: linear;
+            }
+            75% {
+                transform: translateX(150px); /* The slow crawl across the middle */
+                animation-timing-function: ease-in;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(250px); /* Final zoom out */
+                opacity: 0;
+            }
+        }
+
+        /* Subtle Fade In for the whole page */
+        .fade-in {
+            animation: fadeInPage 0.8s ease forwards;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: scale(1.05); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="fade-in">
+
+    <h1>um momento...</h1>
+
+    <div class="wp-loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+    <script>
+        const destination = "https://discord.gg/fQKHtd8VHD";
+
+        setTimeout(() => {
+            window.location.replace(destination);
+        }, 3000);
+    </script>
+
+</body>
+</html>
