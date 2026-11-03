@@ -1,8 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-    </head>
-    <body></body>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17191d">
+  <title>Como fazer parceria - FNAA</title>
+    <link rel="icon" type="image/x-icon" href="../../sources/favicon.ico" />
+
+  <style>
+    :root {
+      --bg: #111316;
+      --surface: #1b1e23;
+      --text: #f1f2f4;
+      --muted: #a5aab3;
+      --border: #30353e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: min(760px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 64px 0 30px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(27px, 5vw, 38px);
+      line-height: 1.2;
+      letter-spacing: -.8px;
+    }
+
+    .intro {
+      margin: 12px 0 28px;
+      color: var(--muted);
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 19px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .number {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      border-radius: 8px;
+      background: #303640;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .step p {
+      margin: 3px 0 0;
+      color: #d0d3d9;
+    }
+
+    .step a {
+      color: #e6e9ef;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+      padding: 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .actions h2 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .actions p {
+      margin: -6px 0 4px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .button {
+      display: block;
+      padding: 11px 15px;
+      border-radius: 7px;
+      background: #e5e7eb;
+      color: #17191d;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 650;
+      font-size: 14px;
+      transition: background .15s ease, transform .15s ease;
+    }
+
+    .button:hover {
+      background: white;
+      transform: translateY(-1px);
+    }
+
+    .button.secondary {
+      background: #303640;
+      color: var(--text);
+      border: 1px solid #414854;
+    }
+
+    .button.secondary:hover { background: #3a414c; }
+
+    footer {
+      padding-top: 22px;
+      text-align: center;
+      color: #747b86;
+      font-size: 12px;
+    }
+
+    @media (max-width: 520px) {
+      .page { padding-top: 38px; }
+      .step { padding: 16px; gap: 12px; }
+      .actions { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <p class="eyebrow">FNAA · Faça Novos Amigos Aqui!</p>
+    <h1>Como fazer uma parceria?</h1>
+    <p class="intro">
+      Quer fazer uma parceria com a FNAA? <b>É simples!</b> Siga os passos abaixo
+      para entrar em contato com nossa equipe.
+    </p>
+
+    <section class="steps" aria-label="Passos para fazer parceria">
+      <article class="step">
+        <span class="number">1</span>
+        <p>Entre em nosso servidor do Discord.</p>
+      </article>
+
+      <article class="step">
+        <span class="number">2</span>
+        <p>
+          Abra o canal
+          <a href="https://discord.com/channels/1564075779736866837/1564106832996204554"
+             target="_blank" rel="noopener noreferrer">#🚧│criar-boletim</a>
+          e clique em <strong>“Create Ticket”</strong>.
+        </p>
+      </article>
+
+      <article class="step">
+        <span class="number">3</span>
+        <p>Mencione que você veio para fazer uma parceria.</p>
+      </article>
+
+      <article class="step">
+        <span class="number">4</span>
+        <p>Espere por uma resposta da <strong>@Equipe da Moderação</strong>.</p>
+      </article>
+    </section>
+
+    <section class="actions">
+      <h2>Pronto para começar?</h2>
+      <p>Acesse nosso servidor ou volte para a página principal.</p>
+
+      <a class="button" href="https://discord.com/channels/1564075779736866837/1564106832996204554">Fazer parceria</a>
+
+      <a class="button" href="https://forms.gle/UCxwkAiyCKqCSgUSA" target="_blank" rel="noopener noreferrer">Fazer formulário pra virar ajudante</a>
+
+      <a class="button" href="https://discord.gg/fQKHtd8VHD"
+         target="_blank" rel="noopener noreferrer">Entrar no servidor</a>
+
+      <a class="button secondary" href="../index.html">Voltar</a>
+    </section>
+
+    <footer>© 2026 · SouSand Artworks Studios Brasil</footer>
+  </main>
+</body>
 </html>
