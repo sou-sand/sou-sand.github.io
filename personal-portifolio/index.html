@@ -294,6 +294,67 @@
                 object-fit: cover;
             }
 
+            .profile-gallery {
+                position: relative;
+                aspect-ratio: 350 / 439;
+                background: #000;
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                overflow: hidden;
+            }
+
+            .profile-gallery #pfp {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+            }
+
+            .profile-gallery-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 34px;
+                height: 34px;
+                border: 1px solid var(--border);
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.65);
+                color: #fff;
+                cursor: pointer;
+                z-index: 1;
+            }
+
+            .profile-gallery-btn:hover {
+                background: var(--accent);
+            }
+
+            .profile-gallery-prev {
+                left: 8px;
+            }
+
+            .profile-gallery-next {
+                right: 8px;
+            }
+
+            .profile-gallery-position {
+                position: absolute;
+                bottom: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 2px 8px;
+                border-radius: 10px;
+                background: rgba(0, 0, 0, 0.7);
+                color: #fff;
+                font-size: 0.75rem;
+            }
+
+            .jobs-image {
+                display: block;
+                width: min(100%, 500px);
+                height: auto;
+                margin-bottom: 12px;
+            }
+
             .infobox-data {
                 width: 100%;
                 border-collapse: collapse;
@@ -451,6 +512,12 @@
                     <p>Hi! I'm SouSand!<br></p>
                     <p>I'm always happy to talk about anything! Whether you'd like to help with my projects or need help with yours, I can make some time for you!</p>
 
+                    <h2 class="wiki-section-title" id="jobs">Current Jobs</h2>
+                    <img class="jobs-image" src="sources/images/meme.jpg" alt="Meme related to SouSand's current jobs">
+                    <h1>Brazilian Portuguese Content Localisation Manager at <a href="https://wiilink.ca/">WiiLink</a></h1>
+                    <h1>Co-manager of <a href="#whatsappforwp">WhatsAppForWP</a></h1>
+                    <h1>Creator of <a href="#sc">Stereo City</a>, <a href="#vss">VS Songs!</a>, <a href="https://novarevival.marmak.net.pl">NovaRevival</a> and everything below here</h1>
+
                     <h2 class="wiki-section-title">Current Projects</h2>
                     <div class="project-grid">
                         <!--<div class="project-card">
@@ -531,7 +598,7 @@
 
                         <div class="project-card">
                             <iframe title="FNAA" src="https://discord.com/widget?id=1564075779736866837&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-                            <div class="project-body">
+                            <div class="project-body" id="fnaa">
                                 <div class="project-meta">
                                     <span class="project-name">FNAA - Make New Friends Here!</span>
                                 </div>
@@ -545,7 +612,7 @@
                             </div>
                         </div>
 
-                        <div class="project-card">
+                        <div class="project-card" id="whatsappforwp">
                             <img
                                 class="thumbnail"
                                 src="sources/images/wa-a.png"
@@ -563,7 +630,7 @@
                             </div>
                         </div>
                         
-                        <div class="project-card">
+                        <div class="project-card" id="vss">
                             <img
                                 class="thumbnail"
                                 src="old/images/no-img.png"
@@ -580,7 +647,7 @@
                             </div>
                         </div>
                         
-                        <div class="project-card">
+                        <div class="project-card" id="novarevival">
                             <img
                                 class="thumbnail"
                                 src="sources/images/novarevivalthumb.png"
@@ -633,7 +700,7 @@
                             </div>
                         </div>-->
 
-                        <div class="project-card">
+                        <div class="project-card" id="sc">
                             <img class="thumbnail" src="sources/images/stereo_city_banner.png" alt="Stereo City Thumbnail" />
                             <div class="project-body">
                                 <div class="project-meta">
@@ -779,7 +846,12 @@
                     <div class="infobox-title">SouSand</div>
 
                     <div class="infobox-pfp-wrapper">
-                        <img id="pfp" src="sources/images/pfp.jpg" alt="Profile Picture" />
+                        <div class="profile-gallery">
+                            <button class="profile-gallery-btn profile-gallery-prev" type="button" aria-label="Previous profile picture" onclick="changeProfilePhoto(-1)">&#10094;</button>
+                            <img id="pfp" src="sources/images/front.jpg" alt="SouSand (front photo)" />
+                            <button class="profile-gallery-btn profile-gallery-next" type="button" aria-label="Next profile picture" onclick="changeProfilePhoto(1)">&#10095;</button>
+                            <span class="profile-gallery-position" id="profileGalleryPosition" aria-live="polite">1 / 2</span>
+                        </div>
                     </div>
 
                     <table class="infobox-data">
@@ -788,11 +860,15 @@
                             <td>He/She</td>
                         </tr>
                         <tr>
+                            <th>Languages</th>
+                            <td>English, Brazillian Portuguese and some Japanese</td>
+                        </tr>
+                        <tr>
                             <th>Roles</th>
                             <td>Developer, UI designer, owner of FNAA and SouSand Artworks Studios.</td>
                         </tr>
                         <tr>
-                            <th>Based in</th>
+                            <th>Nationality</th>
                             <td>Brazil</td>
                         </tr>
                         <tr>
@@ -827,6 +903,22 @@
         <footer>© 2026 SouSand • All rights reserved</footer>
 
         <script>
+            const profileGalleryImages = [
+                { src: "sources/images/front.jpg", alt: "SouSand (front photo)" },
+                { src: "sources/images/pfp.jpg", alt: "SouSand profile picture" }
+            ];
+            let currentProfilePhoto = 0;
+
+            function changeProfilePhoto(direction) {
+                currentProfilePhoto = (currentProfilePhoto + direction + profileGalleryImages.length) % profileGalleryImages.length;
+                const photo = profileGalleryImages[currentProfilePhoto];
+                const image = document.getElementById("pfp");
+                image.src = photo.src;
+                image.alt = photo.alt;
+                document.getElementById("profileGalleryPosition").textContent =
+                    `${currentProfilePhoto + 1} / ${profileGalleryImages.length}`;
+            }
+
             // gah, too lazy to update, thanks gemini for making ts, im rlly lazy
             // to-do update
             const projectGallery = [
@@ -942,4 +1034,5 @@
 
             window.onload = () => initDots("galleryDots");
         </script>
+
     </body>

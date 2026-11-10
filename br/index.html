@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SouSand | My Portfolio :D</title>
+        <title>SouSand | Meu Portfólio :D</title>
         <link rel="icon" type="image/x-icon" href="sources/images/favicon.ico" />
 
         <style>
@@ -294,6 +294,67 @@
                 object-fit: cover;
             }
 
+            .profile-gallery {
+                position: relative;
+                aspect-ratio: 350 / 439;
+                background: #000;
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                overflow: hidden;
+            }
+
+            .profile-gallery #pfp {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+            }
+
+            .profile-gallery-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 34px;
+                height: 34px;
+                border: 1px solid var(--border);
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.65);
+                color: #fff;
+                cursor: pointer;
+                z-index: 1;
+            }
+
+            .profile-gallery-btn:hover {
+                background: var(--accent);
+            }
+
+            .profile-gallery-prev {
+                left: 8px;
+            }
+
+            .profile-gallery-next {
+                right: 8px;
+            }
+
+            .profile-gallery-position {
+                position: absolute;
+                bottom: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 2px 8px;
+                border-radius: 10px;
+                background: rgba(0, 0, 0, 0.7);
+                color: #fff;
+                font-size: 0.75rem;
+            }
+
+            .jobs-image {
+                display: block;
+                width: min(100%, 500px);
+                height: auto;
+                margin-bottom: 12px;
+            }
+
             .infobox-data {
                 width: 100%;
                 border-collapse: collapse;
@@ -441,7 +502,7 @@
 
                 <div class="news-item">
                     <span class="news-date">2 de Novembro de 2026</span>
-                    <h3>Lançamento do site exclusivo para o Brasil e conclusão da reforma da FNAA</h3>
+                    <h3>Lançamento do site exclusivo para o Brasil e deste site, além da conclusão da reforma da FNAA (somente para brasileiros)</h3>
                     <p>OOOOOOO! Há quanto tempo este site não vê a luz do dia!<br>Quer nos ajudar na FNAA? Preencha este formulário!</p>
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc-80_sn8ZJyIk9VwNK9Uc4bXhgGIUxN7A4euYrUKa6_0yd9Q/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
                 </div>
@@ -452,6 +513,12 @@
                     <p>Olá! Eu sou SouSand!<br></p>
                     <p>Eu tô pronta para falar sobre qualquer coisa! Seja você me ajudar nos meus projetos, ou eu lhe ajudar nos seus, eu tenho um tempinho livre pra cê!</p>
                     
+                    <h2 class="wiki-section-title" id="jobs">Trabalhos Atuais</h2>
+                    <img class="jobs-image" src="../personal-portifolio/sources/images/meme.jpg" alt="Meme relacionado aos trabalhos atuais de SouSand">
+                    <h1>Gerente de localização de conteúdo em português brasileiro na <a href="https://wiilink.ca/">WiiLink</a></h1>
+                    <h1>Co-gerente do <a href="#whatsappforwp">WhatsAppForWP</a></h1>
+                    <h1>Criadora de <a href="#sc">Stereo City</a>, <a href="#vss">VS Songs!</a>, <a href="https://novarevival.marmak.net.pl">NovaRevival</a> e de tudo abaixo</h1>
+
                     <h2 class="wiki-section-title">Projetos Atuais</h2>
                     <div class="project-grid">
                         <!--<div class="project-card">
@@ -532,13 +599,13 @@
 
                         <div class="project-card">
                             <iframe title="FNAA" src="https://discord.com/widget?id=1564075779736866837&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-                            <div class="project-body">
+                            <div class="project-body" id="fnaa">
                                 <div class="project-meta">
 
                                     <span class="project-name">FNAA - Faça Novos Amigos Aqui!</span>
                                 </div>
                                 <div class="project-desc">
-                                    Bem-vindo(a) à FNAA, sigla de Faça Novos Amigos Aqui! Aqui, pessoas que procuram novas amizades podem se conhecer e você pode fazer parte das histórias delas. Temos SMP (Minecraft), eventos (como sorteios), uma comunidade e vídeos!</div>
+                                    <strong>[SOMENTE PARA BRASILEIROS]</strong> Bem-vindo(a) à FNAA, sigla de Faça Novos Amigos Aqui! Aqui, pessoas que procuram novas amizades podem se conhecer e você pode fazer parte das histórias delas. Temos SMP (Minecraft), eventos (como sorteios), uma comunidade e vídeos!</div>
                                 <div class="wiki-links">
                                     <a href="https://discord.gg/fQKHtd8VHD" target="_blank">Dê uma olhada (Servidor do Discord)</a>
                                     <a href="https://www.reddit.com/r/fnaaa/" target="_blank">Sub-reddit</a>
@@ -547,7 +614,7 @@
                             </div>
                         </div>
 
-                        <div class="project-card">
+                        <div class="project-card" id="whatsappforwp">
                             <img
                                 class="thumbnail"
                                 src="../personal-portifolio/sources/images/wa-a.png"
@@ -565,7 +632,7 @@
                             </div>
                         </div>
 
-                        <div class="project-card">
+                        <div class="project-card" id="vss">
                             <img
                                 class="thumbnail"
                                 src="old/images/no-img.png"
@@ -582,7 +649,7 @@
                             </div>
                         </div>
 
-                        <div class="project-card">
+                        <div class="project-card" id="novarevival">
                             <img
                                 class="thumbnail"
                                 src="sources/images/novarevivalthumb.png"
@@ -635,7 +702,7 @@
                             </div>
                         </div>-->
 
-                        <div class="project-card">
+                        <div class="project-card" id="sc">
                             <img class="thumbnail" src="sources/images/stereo_city_banner.png" alt="Miniatura de Stereo City" />
                             <div class="project-body">
                                 <div class="project-meta">
@@ -781,7 +848,12 @@
                     <div class="infobox-title">SouSand</div>
 
                     <div class="infobox-pfp-wrapper">
-                        <img id="pfp" src="sources/images/pfp.jpg" alt="Profile Picture" />
+                        <div class="profile-gallery">
+                            <button class="profile-gallery-btn profile-gallery-prev" type="button" aria-label="Foto de perfil anterior" onclick="changeProfilePhoto(-1)">&#10094;</button>
+                            <img id="pfp" src="../personal-portifolio/sources/images/front.jpg" alt="SouSand (foto de frente)" />
+                            <button class="profile-gallery-btn profile-gallery-next" type="button" aria-label="Próxima foto de perfil" onclick="changeProfilePhoto(1)">&#10095;</button>
+                            <span class="profile-gallery-position" id="profileGalleryPosition" aria-live="polite">1 / 2</span>
+                        </div>
                     </div>
 
                     <table class="infobox-data">
@@ -790,11 +862,15 @@
                             <td>Ele/Ela</td>
                         </tr>
                         <tr>
+                            <th>Idiomas</th>
+                            <td>Inglês, Português Brasileiro e um pouco de Japonês</td>
+                        </tr>
+                        <tr>
                             <th>Cargos</th>
                             <td>Desenvolvedora, Design de Interface, Dona de FNAA e SouSand Artworks Studios.</td>
                         </tr>
                         <tr>
-                            <th>Originalidade</th>
+                            <th>Localização</th>
                             <td>Brasil</td>
                         </tr>
                         <tr>
@@ -829,6 +905,22 @@
         <footer>© 2026 SouSand • Todos os direitos reservados</footer>
 
         <script>
+            const profileGalleryImages = [
+                { src: "../personal-portifolio/sources/images/front.jpg", alt: "SouSand (foto de frente)" },
+                { src: "sources/images/pfp.jpg", alt: "Foto de perfil de SouSand" }
+            ];
+            let currentProfilePhoto = 0;
+
+            function changeProfilePhoto(direction) {
+                currentProfilePhoto = (currentProfilePhoto + direction + profileGalleryImages.length) % profileGalleryImages.length;
+                const photo = profileGalleryImages[currentProfilePhoto];
+                const image = document.getElementById("pfp");
+                image.src = photo.src;
+                image.alt = photo.alt;
+                document.getElementById("profileGalleryPosition").textContent =
+                    `${currentProfilePhoto + 1} / ${profileGalleryImages.length}`;
+            }
+
             // gah, too lazy to update, thanks gemini for making ts, im rlly lazy
             // to-do update
             const projectGallery = [
