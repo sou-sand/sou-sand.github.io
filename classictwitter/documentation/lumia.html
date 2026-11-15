@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Documentation (Lumia) | Nova Revival</title>
+        <link rel="stylesheet" href="css/wp_main.css" />
+        <link rel="stylesheet" href="css/docs.css" />
+            <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+            <link rel="icon" href="favicon.ico" type="image/x-icon" />
+            <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon" />
+    </head>
+    <body class="docs-page">
+        <header>
+            <div class="logo-container">
+                <img src="images/teamLogo.png" id="main-logo" class="team-logo" alt="Nova Logo" />
+                <div class="brand">
+                    <p class="brand-p">Nova<br />Revival</p>
+                </div>
+            </div>
+            <nav>
+                <a href="https://novarevival.marmak.net.pl/index.html">home</a>
+                <!--<a href="https://novarevival.marmak.net.pl/redirect/docs.html" class="active">docs</a-->
+                <button class="theme-toggle" onclick="toggleTheme()">switch theme (beta)</button>
+            </nav>
+        </header>
+
+        <main class="docs-container">
+            <!--
+            <aside class="docs-sidebar">
+                <h3>getting started</h3>
+                <ul>
+                    <li><a href="#hardware">Supported hardware</a></li>
+                    <li><a href="#requirements">Requirements</a></li>
+                    <li><a href="#ogfirm">Flashing Original Firmware</a></li>
+                    <li><a href="#wpseven">Updating to WP7.8</a></li>
+                </ul>
+
+                <h3>jailbreak</h3>
+                <ul>
+                    <li><a href="#loader">Flashing Qualcomm Loader</a></li>
+                    <li><a href="#custom">Installing a Custom ROM</a></li>
+                    <li><a href="#rooting">Rooting the Custom ROM</a></li>
+                </ul>
+
+                <h3>sideloading</h3>
+                <ul>
+                    <li><a href="#xap">Installing .XAP files</a></li>
+                </ul>
+                <h3>credits+info</h3>
+                <ul>
+                    <li><a href="credits">Special thanks</a></li>
+                </ul>
+            </aside>
+-->
+            <h1><strong>lumia - wp7</strong></h1>
+            <p><strong>swipe to the right, or use the summary in the left to navigate.</strong></p>
+            <h5>sorry for the current article state. we plan to fix this futher on.</h5>
+            <div class="info-box"><strong>Made in honor of:&nbsp;</strong>windowsphonehacker.</div>
+
+            <div class="docs-content">
+                <section id="hardware">
+                    <h1 class="doc-title">supported hardware</h1>
+                    <p>Below is the current compatibility matrix for Nova Revival jailbreak tools and custom ROMs.</p>
+
+                    <div class="data-container">
+                        <table class="metro-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Model</th>
+                                    <th>ROMs</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="group-header">
+                                    <td colspan="4">Nokia Lumia Series</td>
+                                </tr>
+                                <tr>
+                                    <td>Nokia Lumia 710</td>
+                                    <td>RM-803, RM-809</td>
+                                    <td>Rainbow Mod 2.2, Full Unlock Root, Lumiatrix</td>
+                                    <td><span class="status-tag stable">Stable</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Nokia Lumia 800</td>
+                                    <td>RM-801</td>
+                                    <td>Rainbow Mod 2.2, Full Unlock Root</td>
+                                    <td><span class="status-tag stable">Stable</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Nokia Lumia 900</td>
+                                    <td>RM-823, RM-808</td>
+                                    <td>Rainbow Mod 2.2</td>
+                                    <td><span class="status-tag stable">Stable</span></td>
+                                </tr>
+
+                                <tr class="group-header">
+                                    <td colspan="4">HTC Series - <a href="https://novarevival.marmak.net.pl/documentation/sorry.html">link to article</a></td>
+                                </tr>
+                                <tr>
+                                    <td>HTC Eternity (Titan)</td>
+                                    <td>Titan, Titan406, Titan 405</td>
+                                    <td>Freedom V1 (Pearl), Dynamics 2.2</td>
+                                    <td><span class="status-tag soon">Soon</span></td>
+                                </tr>
+                                <tr>
+                                    <td>HTC Omega (Radar)</td>
+                                    <td>Radar</td>
+                                    <td>Freedom V1 (Pearl Edition)</td>
+                                    <td><span class="status-tag soon">Soon</span></td>
+                                </tr>
+                                <tr>
+                                    <td>HTC Schubert (HD7/HD7S)</td>
+                                    <td>T9292, T9295, T9296</td>
+                                    <td>Dynamics 2.2</td>
+                                    <td><span class="status-tag soon">Soon</span></td>
+                                </tr>
+                                <tr>
+                                    <td>HTC Spark (Trophy)</td>
+                                    <td>T8686, Spark_W (Verizon)</td>
+                                    <td>Dynamics 2.2, XevRev Beta 1a</td>
+                                    <td><span class="status-tag soon">Soon</span></td>
+                                </tr>
+                                <tr>
+                                    <td>HTC Mozart / Gold</td>
+                                    <td>T8697, T8698, T7575 (Pro 7)</td>
+                                    <td>Dynamics 2.2</td>
+                                    <td><span class="status-tag soon">Soon</span></td>
+                                </tr>
+
+                                <tr class="group-header">
+                                    <td colspan="4">Samsung Series - <a href="https://novarevival.marmak.net.pl/documentation/sorry.html">link to article</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Samsung Focus</td>
+                                    <td>1.3, 1.4</td>
+                                    <td>Standard Interop Unlock</td>
+                                    <td><span class="status-tag soon">Soon</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Samsung Omnia</td>
+                                    <td>7</td>
+                                    <td>Standard Interop Unlock</td>
+                                    <td><span class="status-tag soon">Soon</span></td>
+                                </tr>
+                                <tr class="group-header">
+                                    <td colspan="4">LG Series - <a href="https://novarevival.marmak.net.pl/documentation/lg.html">link to article</a></td>
+                                </tr>
+                                <tr>
+                                    <td> LG Optimus</td>
+                                    <td> 7 E900</td>
+                                    <td>Standard Interop Unlock</td>
+                                    <td><span class="status-tag stable">Stable</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <div class="docs-content">
+                <section id="requirements">
+                    <h1 class="doc-title">system requirements</h1>
+                    <p>Before beginning the revival process, ensure you have the following physical tools:</p>
+                    <div class="info-box">
+                        <strong>Note:</strong> Currently, only devices in the supported hardware list are supported. Do
+                        not try with phones with similar models, or apperances, that are not in the list. It may brick
+                        and damage your phone. Also, not all Qualcomm loaders of all devices in the list will be
+                        avaliable in the archive, and will get added in the future.
+                    </div>
+                    <ul>
+                        <li>
+                            Windows PC running Windows 7, 8.1, 10, or 11. (In most cases, Windows 11 struggles detecting
+                            Windows Phones. We recommend using Windows 7 or 8.1.)
+                        </li>
+                        <li>Original micro-USB data cable (charging cables may not work).</li>
+                    </ul>
+                    <h1 class="doc-title">required tools+files</h1>
+                    <p>You can get these on the archive:</p>
+                    <ul>
+                        <li>
+                            NSS Pro (<a
+                                href="https://dl.marmak.net.pl/software/Windows/various/WP7%20Tools/Unlocker-Jailbreakers-Flashers/NssPro.zip"
+                                >Link to archive</a
+                            >)
+                        </li>
+                        <li>
+                            Windows Phone 7 Storage Enabler (<a
+                                href="https://dl.marmak.net.pl/software/Windows/various/WP7%20Tools/WP7USBStorageEnabler/"
+                                >Link to archive</a
+                            >)
+                        </li>
+                        <li>
+                            Windows Phone USB Drivers (<a
+                                href="https://dl.marmak.net.pl/software/Windows/various/WP7%20Tools/WinUSB%2BDrivers.zip"
+                                >Link to archive</a
+                            >
+                        </li>
+                        <li>
+                            Zune Software 4.8 installed. (<a
+                                href="https://dl.marmak.net.pl/software/Windows/Microsoft/Zune/"
+                                >Link to archive</a
+                            >)
+                        </li>
+                        <li>
+                            Windows Phone SDK 7.1 (Lite version recommended,
+                            <a href="https://androidfilehost.com/?fid=17248734326145720588">Link to download</a> or
+                            <a href="https://dl.marmak.net.pl/archive/WPSDK-7.1.1-KB2669191-x86.exe">Archive (Mirror)</a
+                            >).
+                        </li>
+                        <li>
+                            Nokia Care Suite (Not needed, but if you are going to do a clean install using original
+                            firmware, you will need this program. Download it using this
+                            <a
+                                href="https://dl.marmak.net.pl/software/Windows/various/WP7%20Tools/Unlocker-Jailbreakers-Flashers/Nokia_Care_Suite_5.0_2012.12.5.3.msi"
+                                >Link to archive</a
+                            >).
+                        </li>
+                        <li>
+                            Your phone's Qualcomm loaders (<a href="https://dl.marmak.net.pl/roms/%21Loaders/Qualcomm/"
+                                >Link to archive</a
+                            >).
+                        </li>
+                        <li>
+                            Your phone's Original firmware (Not needed, only if flashing original firmware.
+                            <a href="https://lumiadb.com/">Link to LumiaDB</a>).
+                        </li>
+                        <li>
+                            SevenEighter (Not needed, only if updating to WP7.8, not compatible with all phones.
+                            <a
+                                href="https://dl.marmak.net.pl/software/Windows/various/WP7%20Tools/Update%20to%20W7.8/SevenEighter.zip"
+                                >Link to Archive</a
+                            >).
+                        </li>
+                        <li>
+                            Windows Mobile Device Center (<a
+                                href="https://dl.marmak.net.pl/software/Windows/Microsoft/WMDC/"
+                                >Link to Archive</a
+                            >).
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            
+            <div class="docs-content">
+                <section id="ogfirm">
+                    <h1 class="doc-title">flashing original firmware</h1>
+                    <p>
+                        This is not needed, but, if you prefer to do a full system reset before flashing a custom rom,
+                        then you can flash the original firmware.
+                    </p>
+                    <p>Follow these steps carefully:</p>
+                    <ol>
+                        <li>Open C:\ProgramData\Nokia\Packages</li>
+                        <li>
+                            Create a "Products" folder&nbsp;(if it doesn't exist yet)&nbsp;and then a folder with your
+                            phone model at C:\ProgramData\Nokia\Packages <br />(It should look like this: (e.g.
+                            C:\ProgramData\Nokia\Packages\Products\RM-809)
+                        </li>
+                        <li>Move your device's flash files (firmware) into that folder.</li>
+                        <li>Power off your phone and unplug from any USB.</li>
+                        <li>
+                            Open C:\Program Files (x86)\Nokia\Nokia Care Suite\Product Support Tool For Store
+                            5.0\ProductSupportToolForStore.exe
+                        </li>
+                        <li>Click File (topbar), Then Open Product.</li>
+                        <li>Insert your model (e.g. RM-809) on the Filter.</li>
+                        <li>Click Programming, then Recovery.</li>
+                        <li>
+                            On the Properties, There should be your Lumia's, respectively, Code, Variant Name, Version.
+                            (The loaders need to match.)
+                        </li>
+                        <li>Click Start, don't plug your phone yet.</li>
+                        <li>
+                            After a few seconds, a window should appear saying that device has lost connection, Holding
+                            the volume up (+) button on your phone, quiclky plug your phone to the USB cable connected
+                            to your PC.
+                        </li>
+                        <li>After a bit, you should feel a slight vibration, meaning you're sucessful.</li>
+                        <li>
+                            The window should saying "Flashing" and some other stuff. Wait until the process finishes.
+                            (If your Lumia vibrated but nothing changed on PC, means you need to install correctly your
+                            driver.)
+                        </li>
+                        <li>Congrats, you've successfully flashed your phone's original firmware.</li>
+                    </ol>
+                </section>
+            </div>
+            
+            <div class="docs-content">
+                <section id="wpseven">
+                    <h1 class="doc-title">updating to WP7.8</h1>
+                    <div class="info-box">
+                        <strong>Note:&nbsp;</strong>You can just install a custom rom, which is more feature packed, but
+                        if you just want to update to WP7.8 after flashing original firmware, or not.
+                    </div>
+                    <p>Follow these steps carefully:</p>
+                    <ol>
+                        <li>Plug your phone to the USB.</li>
+                        <li>Open SevenEighter, and click Install WP7.8.</li>
+                        <li>Follow the instructions on-screen.</li>
+                    </ol>
+                </section>
+            </div>
+            
+            <div class="docs-content"><section id="loader">
+                <section id="loaders">
+                    <h1 class="doc-title">flashing qualcomm loaders</h1>
+                    <div class="info-box">
+                        <strong>Note:&nbsp;</strong>Again, not all Qualcomm loaders of all devices in the list will be
+                        avaliable in the archive, and will get added in the future.
+                    </div>
+                    <strong>Why is this needed?</strong>
+                    <p>
+                        Because it allows communication between NSS Pro &amp; the phone, allowing you to flash custom
+                        roms on your phone.
+                    </p>
+                    <p>Follow these steps carefully:</p>
+                    <ol>
+                        <li>Open NSS Pro as a administrator.</li>
+                        <li>Click on the flashing tab, and then WP7 Tools.</li>
+                        <li>Now, put the qualcomm loaders files on the NSSPro directory, \loaders\special\wp7.</li>
+                        <li>After that, click install and follow the instructions on-screen.</li>
+                    </ol>
+                </section></section>
+            </div>
+            
+            <div class="docs-content">
+            
+                <section id="custom">
+                    <h1 class="doc-title">installing a custom rom</h1>
+                    <div class="info-box">
+                        <strong>Note:&nbsp;</strong>Again, not all Qualcomm loaders of all devices in the list will be
+                        avaliable in the archive, and will get added in the future.
+                    </div>
+                    <strong>Why is this needed?</strong>
+                    <p>
+                        Because it allows communication between NSS Pro &amp; the phone, allowing you to flash custom
+                        roms on your phone.
+                    </p>
+                    <p>Follow these steps carefully:</p>
+                    <ol>
+                        <li>Open NSS Pro as a administrator.</li>
+                        <li>Click on the flashing tab, and then WP7 Tools.</li>
+                        <li>
+                            Click "OS File" and open your os-new.nb (or the file with the biggest size with a .nb
+                            extension/format) file (The file in the selected ROM you want to flash).
+                        </li>
+                        <li>
+                            Click Write OS, and wait for the operation to be complete. If any instructions are shown,
+                            follow them.
+                        </li>
+                    </ol>
+                </section>
+            </div>
+            
+            <div class="docs-content">
+            
+                <section id="rooting">
+                    <h1 class="doc-title">rooting the custom rom</h1>
+                    <div class="info-box">
+                        <strong>Note:&nbsp;</strong>Not all custom roms are compatible with the WMDC method. If any app related to WDMC isn't present, then it probably isn't supported. Try the WP7USBStorageEnabler method instead.</div>
+                    <strong>Why is this needed?</strong>
+                    <p>
+                        Because it allows you to transfer files, such as XAPs (apps), to your phone.</p>
+                    <p>Follow these steps carefully:</p>
+                    <ol>
+                        <li>Power on your phone and plug your device normally.<br></li>
+                        <li>With Windows Mobile Device Center and Zune installed, it should open automatically. If not, open them manually.</li>
+                        <li>
+                            Setup your device if you didn't already.
+                        </li>
+                        <li>
+                            On your explorer tab, there should be a laptop or your device logo and name as a device.
+                        </li>
+                    </ol>
+                    <p>Or, if that didn't work:</p>
+                    <ol>
+                        <li>Open WP7USBStorageEnabler.</li>
+                        <li>Connect your phone to the USB, on.</li>
+                        <li>Click Enable, then replug the device in the USB.</li>
+                        <li>
+                            On your explorer tab, there should be a MP3 Player or your device logo and name as a device.
+                        </li>
+                    </ol>
+                </section>
+            </div>
+            
+            <div class="docs-content">
+            
+                <section id="xap">
+                    <h1 class="doc-title">installing apps+games (xaps)</h1>
+                    <div class="info-box">
+                        <strong>Note:&nbsp;</strong>Before continuing, know that the Lumiatrix ROM may have problems when trying to install a XAP.</div>
+                    <p>
+                        There is 2 methods in doing this. Method 1:</p>
+                    <p>Follow these steps carefully:</p>
+                    <ol>
+                        <li>Open the start menu (PC) and look for "Application Deployment" on the WP8 SDK Lite/WP7 SDK folder.</li>
+                        <li>With your phone plugged in the USB, select the XAP you want to deploy.</li>
+                        <li>Click Deploy and wait. If it returns a error, it probably is corruped, or made for a newer version of WP.</li>
+                    </ol>
+                    <p>Or:</p>
+                    <ol>
+                        <li>With WMDC opened (or WP7USBStorageEnabler enabled) and device connected, click "Open Phone files" (or open your phone directory in explorer).</li>
+                        <li>Go to \, then My Documents and create a new folder.</li>
+                        <li>Then, copy and paste your XAPs to the folder you just created.</li>
+                        <li>
+                            On your phone, open "XAP Deployer", if it isn't there, look at the settings.
+                        </li>
+                        <li>Click the folder icon at the appbar.</li>
+                        <li>Select the XAP you want to install.</li>
+                        <li>Click Install XAP, and wait for the process to end. If it returns a error, it probably is corruped, or made for a newer version of WP.</li>
+                    </ol>
+                </section>
+            </div>
+            <footer class="wp-appbar">
+
+    <div class="wp-appbar-main">
+
+        <a href="#hardware">
+            <span class="icon"><img src="imgs/appbar.phone.png" width="40" height="40"></span>
+            <span class="label">devices</span>
+        </a>
+
+        <a href="#requirements">
+            <span class="icon"><img src="imgs/appbar.cog.png" width="40" height="40"></span>
+            <span class="label">tools</span>
+        </a>
+        
+        <a href="#wpseven">
+            <span class="icon"><img src="imgs/appbar.upload.png" width="40" height="40"></span>
+            <span class="label">update to wp7.8</span>
+        </a>
+        
+        <a href="#ogfirm">
+            <span class="icon"><img src="imgs/appbar.reset.png" width="40" height="40"></span>
+            <span class="label">stock firmware</span>
+        </a>
+
+        <a href="#loaders">
+            <span class="icon"><img src="imgs/appbar.lightning.png" width="40" height="40"></span>
+            <span class="label">flash qualcomm loader</span>
+        </a>
+        
+        <a href="#custom">
+            <span class="icon"><img src="imgs/appbar.download.png" width="40" height="40"></span>
+            <span class="label">install custom rom</span>
+        </a>
+        
+        <a href="#ogfirm">
+            <span class="icon"><img src="imgs/appbar.zune.png" width="40" height="40"></span>
+            <span class="label">flash original firmware</span>
+        </a>
+        
+        <a href="#rooting">
+            <span class="icon"><img src="imgs/appbar.tools.png" width="40" height="40"></span>
+            <span class="label">rooting</span>
+        </a>
+
+        <a href="#xap">
+            <span class="icon"><img src="imgs/appbar.cabinet.files.png" width="40" height="40"></span>
+            <span class="label">install apps</span>
+        </a>
+        
+        <button id="menuBtn" class="menu-button">...</button>
+
+    </div>
+
+    <div id="appMenu" class="appbar-menu">
+        <!--<a href="#xap">xaps</a>-->
+        <a href="https://novarevival.marmak.net.pl/redirect/credits.html">credits</a>
+    </div>
+</footer>
+             <footer>
+                <div class="footer-container">
+                    <div class="footer-column">
+                        <h3>nova revival</h3>
+                        <p>Make your old Windows Phone new, new once again.</p>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>resources</h4>
+                        <a href="https://novarevival.marmak.net.pl/">documentation</a>
+                        <a href="https://novarevival.marmak.net.pl/">sideloading guide</a>
+                        <a href="https://novarevival.marmak.net.pl/">supported hardware</a>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>community</h4>
+                        <a href="/redirect/discord.html">discord</a>
+                        <a href="/redirect/reddit.html">reddit</a>
+                        <a href="/redirect/telegram.html">telegram</a>
+                    </div>
+
+                    <div class="footer-column site-info">
+                        <p>&copy; 2026 nova revival team</p>
+                        <p>not affiliated with microsoft.</p>
+                        <p>website made by sousand</p>
+                        <p>with the help of MARMAK team</p>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </body>
+</html>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const appMenu = document.getElementById("appMenu");
+
+menuBtn.addEventListener("click", () => {
+    appMenu.classList.toggle("open");
+});
+
+function toggleTheme() {
+                    const body = document.body;
+                    const logo = document.getElementById("main-logo");
+
+                    body.classList.toggle("light-mode");
+                    const isLight = body.classList.contains("light-mode");
+
+                    // Swap the logo source
+                    if (isLight) {
+                        logo.src = "images/teamLogo_black.png";
+                    } else {
+                        logo.src = "images/teamLogo.png";
+                    }
+
+                    localStorage.setItem("theme", isLight ? "light" : "dark");
+                }
+
+                // Load saved preference correctly on startup
+                window.onload = () => {
+                    const logo = document.getElementById("main-logo");
+                    if (localStorage.getItem("theme") === "light") {
+                        document.body.classList.add("light-mode");
+                        logo.src = "images/teamLogo_black.png";
+                    }
+                };
+</script>

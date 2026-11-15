@@ -1,0 +1,176 @@
+/* --- Docs Layout --- */
+
+.docs-container {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+/* --- Sidebar --- */
+.docs-sidebar {
+    width: 280px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    padding: 0 40px;
+    border-right: 1px solid var(--border-color);
+}
+
+.docs-sidebar h3 {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+.docs-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.docs-sidebar li a {
+    display: block;
+    color: var(--secondary-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 0;
+    transition: color 0.2s;
+}
+
+.docs-sidebar li a:hover {
+    color: var(--text-color);
+}
+
+/* --- Content Area --- */
+.docs-content {
+    flex: 1;
+    padding: 0 80px 100px 80px;
+    line-height: 1.6;
+}
+
+.doc-title {
+    font-size: 3.5rem;
+    font-weight: 300;
+    text-transform: lowercase;
+    margin-bottom: 20px;
+}
+
+.doc-divider {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 60px 0;
+}
+
+/* --- Specialized Elements --- */
+.info-box {
+    background: rgba(0, 120, 215, 0.1);
+    border-left: 4px solid var(--accent-color);
+    padding: 20px;
+    margin: 25px 0;
+}
+
+.code-block {
+    background: #1a1a1a;
+    color: #00ff00;
+    font-family: 'Consolas', monospace;
+    padding: 20px;
+    margin: 25px 0;
+    border: 1px solid #333;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+}
+
+/* Light Mode Code Adjustment */
+.light-mode .code-block {
+    background: #f5f5f5;
+    color: #d33682;
+    border-color: #ddd;
+}
+
+/* --- Metro Data Table --- */
+.data-container {
+    margin: 30px 0;
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+}
+
+.metro-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+}
+
+/* Headers */
+.metro-table th {
+    text-align: left;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding: 12px 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+/* Cells */
+.metro-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* Category Headers (The separators) */
+.group-header td {
+    background-color: rgba(128, 128, 128, 0.1);
+    font-weight: 700;
+    text-transform: lowercase;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+}
+
+/* Row Hover Effect */
+.metro-table tbody tr:hover {
+    background-color: rgba(0, 120, 215, 0.05);
+}
+
+/* Status Tags */
+.status-tag {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 1px solid transparent;
+}
+
+.status-tag.stable {
+    color: #00ff00;
+    border-color: #00ff00;
+}
+
+.status-tag.beta {
+    color: #ffaa00;
+    border-color: #ffaa00;
+}
+
+.status-tag.soon {
+    color: var(--secondary-text);
+    border-color: var(--border-color);
+    opacity: 0.6;
+}
+
+/* Light Mode Contrast Fix */
+.light-mode .metro-table tr:hover {
+    background-color: #f0f7ff;
+}
+
+.content-page {
+    display: none; /* Hide all by default */
+}
+.content-page.active {
+    display: block; /* Show only active one */
+}
