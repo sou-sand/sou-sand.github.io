@@ -390,8 +390,8 @@ footer {
 }
 
 .single-img .photo-main {
-    width: 500px;          /* Force the actual width */
-    height: 500px;         /* Force the actual height */
+    width: 296px;          /* Force the actual width */
+    height: 332px;         /* Force the actual height */
     object-fit: contain;   /* Ensures the image doesn't stretch/distort */
     filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
 }
