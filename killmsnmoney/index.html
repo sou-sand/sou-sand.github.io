@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1015">
+  <title>MSN Money Survival Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">$</div>
+        <div>
+          <div class="brand-main">MSN MONEY</div>
+          <div class="brand-sub">SURVIVAL SIMULATOR</div>
+        </div>
+      </div>
+      <div class="hud">
+        <div class="hud-stat"><span class="hud-label">TOTAL CASH</span><span id="hud-cash" class="hud-value accent">$0</span></div>
+        <div class="hud-stat"><span class="hud-label">PER CLICK</span><span id="hud-click" class="hud-value">1</span></div>
+        <div class="hud-stat"><span class="hud-label">PER SECOND</span><span id="hud-dps" class="hud-value">0</span></div>
+        <div class="hud-stat"><span class="hud-label">TARGETS DOWN</span><span id="hud-kills" class="hud-value">0</span></div>
+        <div class="hud-stat"><span class="hud-label">ERA MULTIPLIER</span><span id="hud-mult" class="hud-value warm">x1</span></div>
+      </div>
+    </header>
+
+    <main id="views">
+      <!-- ARENA -->
+      <section id="view-arena" class="view active">
+        <div class="arena">
+          <div class="boss-head">
+            <div>
+              <div class="eyebrow">CURRENT TARGET</div>
+              <div id="boss-name" class="boss-name">MSN Money — Ad Edition</div>
+            </div>
+            <div class="boss-head-right">
+              <div id="boss-hp-text" class="boss-hp-text">90 / 90</div>
+              <div id="status-line" class="status-line">Click the target to terminate MSN Money.</div>
+            </div>
+            <div class="bar bar-hp"><div id="boss-hp-bar" class="bar-fill danger"></div></div>
+          </div>
+
+          <div class="arena-body">
+            <aside class="panel arsenal">
+              <div class="eyebrow">YOUR ARSENAL</div>
+              <div id="stat-click" class="mega accent">1</div>
+              <div class="eyebrow">damage / click</div>
+              <div class="rule"></div>
+              <div class="eyebrow">PER SECOND</div>
+              <div id="stat-dps" class="big warm">0</div>
+              <div class="eyebrow">passive income</div>
+              <div class="combo-wrap">
+                <div class="eyebrow">COMBO METER</div>
+                <div class="bar bar-combo"><div id="combo-bar" class="bar-fill warm"></div></div>
+                <div id="combo-text" class="combo-text"></div>
+              </div>
+            </aside>
+
+            <div class="target-zone">
+              <div class="pulse-ring"></div>
+              <div class="target-ring"></div>
+              <button id="target" class="target" aria-label="Terminate MSN Money">
+                <img src="assets/mascot.png" alt="MSN Money boss" draggable="false">
+              </button>
+              <div id="fx-layer" class="fx-layer"></div>
+              <div id="kill-banner" class="kill-banner" aria-live="polite">
+                <div class="kill-title">TARGET ELIMINATED</div>
+                <div id="kill-reward" class="kill-reward"></div>
+              </div>
+            </div>
+
+            <aside class="panel intel">
+              <div class="eyebrow">TARGET INTEL</div>
+              <div id="stat-tier" class="mega danger">1</div>
+              <div class="eyebrow">escalation tier</div>
+              <div class="rule"></div>
+              <p>Click fast to build a combo. Each click within 1.25 seconds adds 4% damage, up to x3.</p>
+              <p>Passive income also damages the target — upgrades do the work while you are away.</p>
+              <p id="offline-text" class="offline"></p>
+            </aside>
+          </div>
+
+          <div class="hint">TIP: Buy upgrades from the Upgrades app bar. Defeat five targets to unlock a timeline reboot.</div>
+        </div>
+      </section>
+
+      <!-- UPGRADES -->
+      <section id="view-upgrades" class="view">
+        <div class="page-head">
+          <div><h1>UPGRADE SHOP</h1><p>Spend the cash you squeeze out of MSN Money. Prices rise with every purchase.</p></div>
+          <div class="page-head-stat"><span class="eyebrow">AVAILABLE CASH</span><span id="shop-cash" class="accent">$0</span></div>
+        </div>
+        <div id="upgrade-grid" class="card-grid"></div>
+      </section>
+
+      <!-- STATS -->
+      <section id="view-stats" class="view">
+        <div class="page-head">
+          <div><h1>MARKET TELEMETRY</h1><p>Live readout of your campaign against the money machine.</p></div>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-card"><span class="eyebrow">LIFETIME CASH</span><span id="stat-earned" class="accent">$0</span></div>
+          <div class="stat-card"><span class="eyebrow">TOTAL CLICKS</span><span id="stat-clicks">0</span></div>
+          <div class="stat-card"><span class="eyebrow">UPGRADES OWNED</span><span id="stat-upgrades" class="warm">0</span></div>
+          <div class="stat-card"><span class="eyebrow">ERA REBOOTS</span><span id="stat-asc" class="danger">0</span></div>
+        </div>
+        <div class="chart-card">
+          <div class="eyebrow">CASH FLOW / LAST 60 SAMPLES</div>
+          <canvas id="chart"></canvas>
+        </div>
+      </section>
+
+      <!-- TROPHIES -->
+      <section id="view-trophies" class="view">
+        <div class="page-head">
+          <div><h1>TROPHY CASE</h1><p>Milestones unlock automatically as you dismantle the money machine.</p></div>
+          <div class="page-head-stat"><span class="eyebrow">UNLOCKED</span><span id="trophy-count">0 / 0</span></div>
+        </div>
+        <div id="trophy-grid" class="card-grid"></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="view-settings" class="view">
+        <div class="page-head">
+          <div><h1>SETTINGS</h1><p>Tune the experience, reboot the timeline, or wipe the slate clean.</p></div>
+        </div>
+        <div class="settings-stack">
+          <div class="settings-card">
+            <span class="eyebrow">FEEDBACK</span>
+            <label class="toggle-row"><span>Sound effects</span><input type="checkbox" id="sound-toggle" checked><span class="switch"></span></label>
+            <label class="toggle-row"><span>Reduce motion</span><input type="checkbox" id="motion-toggle"><span class="switch"></span></label>
+            <p class="muted">Reduced motion disables floating numbers and confetti.</p>
+          </div>
+          <div class="settings-card">
+            <span class="eyebrow">TIMELINE REBOOT</span>
+            <h2>Rewrite the timeline after 5 targets</h2>
+            <p>Start over with a permanent x1.3 damage multiplier for every reboot. Upgrades and cash reset; trophies and lifetime stats stay.</p>
+            <div class="inline-stats"><span class="eyebrow">MULTIPLIER</span><b id="settings-mult" class="warm">x1</b><span class="eyebrow">TARGETS DOWN</span><b id="settings-kills">0</b></div>
+            <button id="ascend-btn" class="action warm-btn" disabled>REBOOT TIMELINE</button>
+          </div>
+          <div class="settings-card danger-card">
+            <span class="eyebrow">DANGER ZONE</span>
+            <h2>Erase every trace of the campaign</h2>
+            <p>Resets cash, upgrades, targets, trophies and reboots. This cannot be undone.</p>
+            <button id="reset-btn" class="action danger-btn">RESET EVERYTHING</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="appbar" aria-label="App bar">
+      <button class="appbar-btn active" data-view="arena"><span class="glyph">⌂</span><span>ARENA</span></button>
+      <button class="appbar-btn" data-view="upgrades"><span class="glyph">$</span><span>UPGRADES</span></button>
+      <button class="appbar-btn" data-view="stats"><span class="glyph">▤</span><span>STATS</span></button>
+      <button class="appbar-btn" data-view="trophies"><span class="glyph">★</span><span>TROPHIES</span></button>
+      <button class="appbar-btn" data-view="settings"><span class="glyph">⚙</span><span>SETTINGS</span></button>
+    </nav>
+
+    <div id="toast" class="toast" role="status"></div>
+    <div id="confirm" class="modal hidden">
+      <div class="modal-box">
+        <div class="eyebrow">CONFIRM ACTION</div>
+        <h2 id="confirm-title">Are you sure?</h2>
+        <p id="confirm-text"></p>
+        <div class="modal-actions">
+          <button id="confirm-cancel" class="action">CANCEL</button>
+          <button id="confirm-ok" class="action danger-btn">CONFIRM</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
